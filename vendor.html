@@ -1,0 +1,3702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ShopEasy Pro vendor dashboard for managing products, orders, earnings and store details."
+    >
+
+    <title>Vendor Dashboard | ShopEasy Pro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="vendor-body">
+
+    <!-- =====================================
+         TOP HEADER
+    ====================================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <h2>ShopEasy</h2>
+
+            </a>
+
+        </div>
+
+        <div class="search">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search for products..."
+            >
+
+            <button
+                type="button"
+                aria-label="Search"
+            >
+
+                <i class="fas fa-search"></i>
+
+            </button>
+
+        </div>
+
+        <div class="right">
+
+            <button
+                id="themeBtn"
+                type="button"
+                aria-label="Change theme"
+            >
+
+                <i class="fas fa-moon"></i>
+
+            </button>
+
+            <a href="login.html">
+
+                <i class="fas fa-user"></i>
+
+                <span>Login</span>
+
+            </a>
+
+            <a href="wishlist.html">
+
+                <i class="fas fa-heart"></i>
+
+                <span>Wishlist</span>
+
+                <b
+                    class="count"
+                    id="wishlistCount"
+                >
+                    0
+                </b>
+
+            </a>
+
+            <a
+                href="cart.html"
+                class="cart"
+            >
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>Cart</span>
+
+                <b
+                    class="count"
+                    id="cartCount"
+                >
+                    0
+                </b>
+
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- =====================================
+         MAIN NAVIGATION
+    ====================================== -->
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="index.html#categories">Categories</a>
+            </li>
+
+            <li>
+                <a href="index.html#featured">Featured</a>
+            </li>
+
+            <li>
+                <a href="index.html#offers">Offers</a>
+            </li>
+
+            <li>
+                <a
+                    href="vendor.html"
+                    class="active"
+                >
+                    Vendor
+                </a>
+            </li>
+
+            <li>
+                <a href="admin.html">Admin</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- =====================================
+         VENDOR DASHBOARD
+    ====================================== -->
+
+    <main class="vendor-dashboard">
+
+        <!-- SIDEBAR -->
+
+        <aside class="vendor-sidebar">
+
+            <div class="vendor-brand">
+
+                <div class="vendor-logo-box">
+
+                    <i class="fas fa-store"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Seller Panel</h3>
+
+                    <p>ShopEasy Vendor</p>
+
+                </div>
+
+            </div>
+
+            <div class="vendor-profile-mini">
+
+                <div class="vendor-avatar">
+
+                    <i class="fas fa-user-tie"></i>
+
+                </div>
+
+                <div>
+
+                    <strong id="vendorDisplayName">
+                        Demo Vendor
+                    </strong>
+
+                    <span>Verified Seller</span>
+
+                </div>
+
+            </div>
+
+            <ul class="vendor-menu">
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="vendor-menu-btn active"
+                        data-section="vendorOverview"
+                    >
+
+                        <i class="fas fa-chart-pie"></i>
+
+                        <span>Overview</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="vendor-menu-btn"
+                        data-section="vendorProducts"
+                    >
+
+                        <i class="fas fa-boxes-stacked"></i>
+
+                        <span>Products</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="vendor-menu-btn"
+                        data-section="vendorAddProduct"
+                    >
+
+                        <i class="fas fa-circle-plus"></i>
+
+                        <span>Add Product</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="vendor-menu-btn"
+                        data-section="vendorOrders"
+                    >
+
+                        <i class="fas fa-bag-shopping"></i>
+
+                        <span>Orders</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="vendor-menu-btn"
+                        data-section="vendorEarnings"
+                    >
+
+                        <i class="fas fa-wallet"></i>
+
+                        <span>Earnings</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="vendor-menu-btn"
+                        data-section="vendorStore"
+                    >
+
+                        <i class="fas fa-store-alt"></i>
+
+                        <span>Store Profile</span>
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+            <div class="vendor-sidebar-help">
+
+                <i class="fas fa-headset"></i>
+
+                <div>
+
+                    <strong>Need Help?</strong>
+
+                    <p>Contact seller support.</p>
+
+                </div>
+
+                <button
+                    type="button"
+                    onclick="vendorSupportMessage()"
+                >
+                    Contact
+                </button>
+
+            </div>
+
+            <a
+                href="index.html"
+                class="vendor-back-home"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Back to Store
+
+            </a>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <section class="vendor-main-content">
+
+            <!-- DASHBOARD TOPBAR -->
+
+            <div class="vendor-topbar">
+
+                <div>
+
+                    <p class="vendor-welcome-text">
+                        Welcome back
+                    </p>
+
+                    <h1 id="vendorWelcomeName">
+                        Demo Vendor
+                    </h1>
+
+                </div>
+
+                <div class="vendor-topbar-actions">
+
+                    <button
+                        type="button"
+                        class="vendor-notification-btn"
+                        aria-label="Notifications"
+                        onclick="vendorNotificationMessage()"
+                    >
+
+                        <i class="fas fa-bell"></i>
+
+                        <span>3</span>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vendor-add-btn"
+                        onclick="openVendorSection('vendorAddProduct')"
+                    >
+
+                        <i class="fas fa-plus"></i>
+
+                        Add Product
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================
+                 OVERVIEW SECTION
+            ====================================== -->
+
+            <section
+                id="vendorOverview"
+                class="vendor-section active"
+            >
+
+                <div class="vendor-banner">
+
+                    <div class="vendor-banner-content">
+
+                        <span class="vendor-banner-label">
+                            Seller Dashboard
+                        </span>
+
+                        <h2>
+                            Grow your online business with ShopEasy
+                        </h2>
+
+                        <p>
+                            Manage products, review orders and track
+                            your store performance from one dashboard.
+                        </p>
+
+                        <button
+                            type="button"
+                            onclick="openVendorSection('vendorAddProduct')"
+                        >
+
+                            <i class="fas fa-box-open"></i>
+
+                            List New Product
+
+                        </button>
+
+                    </div>
+
+                    <div class="vendor-banner-art">
+
+                        <div class="vendor-art-circle circle-one"></div>
+
+                        <div class="vendor-art-circle circle-two"></div>
+
+                        <i class="fas fa-store"></i>
+
+                    </div>
+
+                </div>
+
+                <!-- STATS -->
+
+                <div class="vendor-stats-grid">
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon blue">
+
+                            <i class="fas fa-indian-rupee-sign"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Revenue</span>
+
+                            <h3 id="vendorTotalRevenue">
+                                ₹1,24,750
+                            </h3>
+
+                            <p class="vendor-positive">
+
+                                <i class="fas fa-arrow-trend-up"></i>
+
+                                12.5% this month
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon green">
+
+                            <i class="fas fa-bag-shopping"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Orders</span>
+
+                            <h3 id="vendorTotalOrders">
+                                248
+                            </h3>
+
+                            <p class="vendor-positive">
+
+                                <i class="fas fa-arrow-trend-up"></i>
+
+                                18 new orders
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon orange">
+
+                            <i class="fas fa-box"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Active Products</span>
+
+                            <h3 id="vendorActiveProducts">
+                                36
+                            </h3>
+
+                            <p>
+
+                                <i class="fas fa-circle-info"></i>
+
+                                4 low in stock
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon pink">
+
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Store Rating</span>
+
+                            <h3>
+                                4.8
+                            </h3>
+
+                            <p class="vendor-positive">
+
+                                <i class="fas fa-face-smile"></i>
+
+                                320 reviews
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- CHART AND SUMMARY -->
+
+                <div class="vendor-overview-grid">
+
+                    <article class="vendor-panel vendor-sales-panel">
+
+                        <div class="vendor-panel-heading">
+
+                            <div>
+
+                                <h3>Sales Overview</h3>
+
+                                <p>
+                                    Monthly sales performance
+                                </p>
+
+                            </div>
+
+                            <select
+                                id="vendorSalesPeriod"
+                                aria-label="Select sales period"
+                            >
+
+                                <option value="6months">
+                                    Last 6 Months
+                                </option>
+
+                                <option value="year">
+                                    This Year
+                                </option>
+
+                                <option value="month">
+                                    This Month
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="vendor-chart-area">
+
+                            <div class="vendor-chart-values">
+
+                                <span>₹60k</span>
+                                <span>₹45k</span>
+                                <span>₹30k</span>
+                                <span>₹15k</span>
+                                <span>₹0</span>
+
+                            </div>
+
+                            <div class="vendor-bars">
+
+                                <div class="vendor-bar-group">
+
+                                    <div
+                                        class="vendor-bar"
+                                        style="height: 42%;"
+                                    ></div>
+
+                                    <span>Jan</span>
+
+                                </div>
+
+                                <div class="vendor-bar-group">
+
+                                    <div
+                                        class="vendor-bar"
+                                        style="height: 58%;"
+                                    ></div>
+
+                                    <span>Feb</span>
+
+                                </div>
+
+                                <div class="vendor-bar-group">
+
+                                    <div
+                                        class="vendor-bar"
+                                        style="height: 52%;"
+                                    ></div>
+
+                                    <span>Mar</span>
+
+                                </div>
+
+                                <div class="vendor-bar-group">
+
+                                    <div
+                                        class="vendor-bar"
+                                        style="height: 72%;"
+                                    ></div>
+
+                                    <span>Apr</span>
+
+                                </div>
+
+                                <div class="vendor-bar-group">
+
+                                    <div
+                                        class="vendor-bar"
+                                        style="height: 65%;"
+                                    ></div>
+
+                                    <span>May</span>
+
+                                </div>
+
+                                <div class="vendor-bar-group">
+
+                                    <div
+                                        class="vendor-bar active"
+                                        style="height: 88%;"
+                                    ></div>
+
+                                    <span>Jun</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-panel">
+
+                        <div class="vendor-panel-heading">
+
+                            <div>
+
+                                <h3>Store Summary</h3>
+
+                                <p>
+                                    Current store activity
+                                </p>
+
+                            </div>
+
+                            <i class="fas fa-ellipsis"></i>
+
+                        </div>
+
+                        <div class="vendor-summary-list">
+
+                            <div class="vendor-summary-item">
+
+                                <div class="vendor-summary-icon">
+
+                                    <i class="fas fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Pending Orders</span>
+
+                                    <strong>12</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="vendor-summary-item">
+
+                                <div class="vendor-summary-icon">
+
+                                    <i class="fas fa-truck-fast"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Orders Shipped</span>
+
+                                    <strong>28</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="vendor-summary-item">
+
+                                <div class="vendor-summary-icon">
+
+                                    <i class="fas fa-rotate-left"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Return Requests</span>
+
+                                    <strong>3</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="vendor-summary-item">
+
+                                <div class="vendor-summary-icon">
+
+                                    <i class="fas fa-eye"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Product Views</span>
+
+                                    <strong>8,459</strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- RECENT ORDERS -->
+
+                <article class="vendor-panel vendor-orders-preview">
+
+                    <div class="vendor-panel-heading">
+
+                        <div>
+
+                            <h3>Recent Orders</h3>
+
+                            <p>
+                                Latest customer orders
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="vendor-link-btn"
+                            onclick="openVendorSection('vendorOrders')"
+                        >
+
+                            View All
+
+                            <i class="fas fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="vendor-table-wrap">
+
+                        <table class="vendor-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Order ID</th>
+
+                                    <th>Customer</th>
+
+                                    <th>Product</th>
+
+                                    <th>Amount</th>
+
+                                    <th>Status</th>
+
+                                    <th>Date</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>#SE10248</td>
+
+                                    <td>
+
+                                        <div class="vendor-customer">
+
+                                            <span>AK</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Amit Kumar
+                                                </strong>
+
+                                                <small>
+                                                    amit@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Wireless Earbuds</td>
+
+                                    <td>₹1,499</td>
+
+                                    <td>
+
+                                        <span class="vendor-status pending">
+                                            Pending
+                                        </span>
+
+                                    </td>
+
+                                    <td>25 Jul 2026</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>#SE10247</td>
+
+                                    <td>
+
+                                        <div class="vendor-customer">
+
+                                            <span>PS</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Priya Sharma
+                                                </strong>
+
+                                                <small>
+                                                    priya@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Smart Watch</td>
+
+                                    <td>₹2,499</td>
+
+                                    <td>
+
+                                        <span class="vendor-status shipped">
+                                            Shipped
+                                        </span>
+
+                                    </td>
+
+                                    <td>24 Jul 2026</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>#SE10246</td>
+
+                                    <td>
+
+                                        <div class="vendor-customer">
+
+                                            <span>RS</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Rahul Singh
+                                                </strong>
+
+                                                <small>
+                                                    rahul@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Gaming Mouse</td>
+
+                                    <td>₹799</td>
+
+                                    <td>
+
+                                        <span class="vendor-status delivered">
+                                            Delivered
+                                        </span>
+
+                                    </td>
+
+                                    <td>23 Jul 2026</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>#SE10245</td>
+
+                                    <td>
+
+                                        <div class="vendor-customer">
+
+                                            <span>NK</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Neha Kapoor
+                                                </strong>
+
+                                                <small>
+                                                    neha@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Sports Shoes</td>
+
+                                    <td>₹1,999</td>
+
+                                    <td>
+
+                                        <span class="vendor-status cancelled">
+                                            Cancelled
+                                        </span>
+
+                                    </td>
+
+                                    <td>22 Jul 2026</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =====================================
+                 PRODUCTS SECTION
+            ====================================== -->
+
+            <section
+                id="vendorProducts"
+                class="vendor-section"
+            >
+
+                <div class="vendor-section-header">
+
+                    <div>
+
+                        <span>Inventory</span>
+
+                        <h2>Manage Products</h2>
+
+                        <p>
+                            View and manage all products listed in your store.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="vendor-add-btn"
+                        onclick="openVendorSection('vendorAddProduct')"
+                    >
+
+                        <i class="fas fa-plus"></i>
+
+                        Add New Product
+
+                    </button>
+
+                </div>
+
+                <div class="vendor-product-tools">
+
+                    <div class="vendor-product-search">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="vendorProductSearch"
+                            placeholder="Search your products..."
+                        >
+
+                    </div>
+
+                    <select
+                        id="vendorCategoryFilter"
+                        aria-label="Filter product category"
+                    >
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="Mobiles">
+                            Mobiles
+                        </option>
+
+                        <option value="Laptop">
+                            Laptop
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Fashion">
+                            Fashion
+                        </option>
+
+                        <option value="Beauty">
+                            Beauty
+                        </option>
+
+                    </select>
+
+                    <select
+                        id="vendorStockFilter"
+                        aria-label="Filter product stock"
+                    >
+
+                        <option value="all">
+                            All Stock
+                        </option>
+
+                        <option value="instock">
+                            In Stock
+                        </option>
+
+                        <option value="lowstock">
+                            Low Stock
+                        </option>
+
+                        <option value="outofstock">
+                            Out of Stock
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                    id="vendorProductList"
+                    class="vendor-product-list"
+                >
+
+                    <!-- Vendor products JavaScript se load honge -->
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 ADD PRODUCT SECTION
+            ====================================== -->
+
+            <section
+                id="vendorAddProduct"
+                class="vendor-section"
+            >
+
+                <div class="vendor-section-header">
+
+                    <div>
+
+                        <span>New Listing</span>
+
+                        <h2>Add New Product</h2>
+
+                        <p>
+                            Fill in the product details to list it in your store.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="vendor-secondary-btn"
+                        onclick="resetVendorProductForm()"
+                    >
+
+                        <i class="fas fa-rotate-right"></i>
+
+                        Reset Form
+
+                    </button>
+
+                </div>
+
+                <form
+                    id="vendorProductForm"
+                    class="vendor-product-form"
+                >
+
+                    <div class="vendor-form-layout">
+
+                        <div class="vendor-form-main">
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-circle-info"></i>
+
+                                    <div>
+
+                                        <h3>Basic Information</h3>
+
+                                        <p>
+                                            Enter product name, category and description.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-form-grid">
+
+                                    <div class="vendor-form-group full-width">
+
+                                        <label for="vendorProductName">
+
+                                            Product Name
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="vendorProductName"
+                                            placeholder="Enter product name"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorProductCategory">
+
+                                            Category
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <select
+                                            id="vendorProductCategory"
+                                            required
+                                        >
+
+                                            <option value="">
+                                                Select category
+                                            </option>
+
+                                            <option value="Mobiles">
+                                                Mobiles
+                                            </option>
+
+                                            <option value="Laptop">
+                                                Laptop
+                                            </option>
+
+                                            <option value="Electronics">
+                                                Electronics
+                                            </option>
+
+                                            <option value="Fashion">
+                                                Fashion
+                                            </option>
+
+                                            <option value="Beauty">
+                                                Beauty
+                                            </option>
+
+                                            <option value="Home">
+                                                Home & Kitchen
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorProductBrand">
+                                            Brand
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="vendorProductBrand"
+                                            placeholder="Enter brand name"
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group full-width">
+
+                                        <label for="vendorProductDescription">
+
+                                            Product Description
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <textarea
+                                            id="vendorProductDescription"
+                                            rows="6"
+                                            placeholder="Write complete product details..."
+                                            required
+                                        ></textarea>
+
+                                        <small>
+                                            Mention product features, specifications and benefits.
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-indian-rupee-sign"></i>
+
+                                    <div>
+
+                                        <h3>Pricing & Inventory</h3>
+
+                                        <p>
+                                            Set product price, old price and available stock.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-form-grid">
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorProductPrice">
+
+                                            Selling Price
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <div class="vendor-input-icon">
+
+                                            <i class="fas fa-indian-rupee-sign"></i>
+
+                                            <input
+                                                type="number"
+                                                id="vendorProductPrice"
+                                                placeholder="0"
+                                                min="1"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorProductOldPrice">
+                                            Original Price
+                                        </label>
+
+                                        <div class="vendor-input-icon">
+
+                                            <i class="fas fa-indian-rupee-sign"></i>
+
+                                            <input
+                                                type="number"
+                                                id="vendorProductOldPrice"
+                                                placeholder="0"
+                                                min="1"
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorProductStock">
+
+                                            Available Stock
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="vendorProductStock"
+                                            placeholder="Enter quantity"
+                                            min="0"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorProductSku">
+                                            Product SKU
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="vendorProductSku"
+                                            placeholder="Example: SE-10001"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                                                        <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-image"></i>
+
+                                    <div>
+
+                                        <h3>Product Image</h3>
+
+                                        <p>
+                                            Add an image link for your product.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-form-grid">
+
+                                    <div class="vendor-form-group full-width">
+
+                                        <label for="vendorProductImage">
+
+                                            Product Image URL
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="url"
+                                            id="vendorProductImage"
+                                            placeholder="https://example.com/product-image.jpg"
+                                            required
+                                        >
+
+                                        <small>
+                                            Use a direct JPG, PNG or WebP image link.
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                        <aside class="vendor-form-side">
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-eye"></i>
+
+                                    <div>
+
+                                        <h3>Product Preview</h3>
+
+                                        <p>
+                                            Preview of your product listing.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-product-preview">
+
+                                    <div class="vendor-preview-image">
+
+                                        <img
+                                            id="vendorPreviewImage"
+                                            src="https://placehold.co/500x400?text=Product+Preview"
+                                            alt="Product preview"
+                                        >
+
+                                    </div>
+
+                                    <p id="vendorPreviewCategory">
+                                        Product Category
+                                    </p>
+
+                                    <h3 id="vendorPreviewName">
+                                        Product Name
+                                    </h3>
+
+                                    <div class="vendor-preview-price">
+
+                                        <strong id="vendorPreviewPrice">
+                                            ₹0
+                                        </strong>
+
+                                        <del id="vendorPreviewOldPrice">
+                                            ₹0
+                                        </del>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-sliders"></i>
+
+                                    <div>
+
+                                        <h3>Listing Settings</h3>
+
+                                        <p>
+                                            Select product status and visibility.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-form-group">
+
+                                    <label for="vendorProductStatus">
+                                        Product Status
+                                    </label>
+
+                                    <select id="vendorProductStatus">
+
+                                        <option value="active">
+                                            Active
+                                        </option>
+
+                                        <option value="draft">
+                                            Draft
+                                        </option>
+
+                                        <option value="inactive">
+                                            Inactive
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <label class="vendor-checkbox">
+
+                                    <input
+                                        type="checkbox"
+                                        id="vendorFeaturedProduct"
+                                    >
+
+                                    <span>
+                                        Mark as featured product
+                                    </span>
+
+                                </label>
+
+                            </article>
+
+                            <button
+                                type="submit"
+                                class="vendor-publish-btn"
+                            >
+
+                                <i class="fas fa-cloud-arrow-up"></i>
+
+                                Publish Product
+
+                            </button>
+
+                        </aside>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- =====================================
+                 ORDERS SECTION
+            ====================================== -->
+
+            <section
+                id="vendorOrders"
+                class="vendor-section"
+            >
+
+                <div class="vendor-section-header">
+
+                    <div>
+
+                        <span>Sales Management</span>
+
+                        <h2>Customer Orders</h2>
+
+                        <p>
+                            Manage and update customer order status.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="vendor-secondary-btn"
+                        onclick="downloadVendorOrders()"
+                    >
+
+                        <i class="fas fa-download"></i>
+
+                        Export Orders
+
+                    </button>
+
+                </div>
+
+                <div class="vendor-order-filter">
+
+                    <button
+                        type="button"
+                        class="vendor-order-filter-btn active"
+                        data-status="all"
+                    >
+                        All Orders
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vendor-order-filter-btn"
+                        data-status="pending"
+                    >
+                        Pending
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vendor-order-filter-btn"
+                        data-status="shipped"
+                    >
+                        Shipped
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vendor-order-filter-btn"
+                        data-status="delivered"
+                    >
+                        Delivered
+                    </button>
+
+                    <button
+                        type="button"
+                        class="vendor-order-filter-btn"
+                        data-status="cancelled"
+                    >
+                        Cancelled
+                    </button>
+
+                </div>
+
+                <article class="vendor-panel">
+
+                    <div class="vendor-table-wrap">
+
+                        <table class="vendor-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Order ID</th>
+
+                                    <th>Customer</th>
+
+                                    <th>Product</th>
+
+                                    <th>Quantity</th>
+
+                                    <th>Total</th>
+
+                                    <th>Payment</th>
+
+                                    <th>Status</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="vendorOrdersTable">
+
+                                <!-- Orders JavaScript se load honge -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =====================================
+                 EARNINGS SECTION
+            ====================================== -->
+
+            <section
+                id="vendorEarnings"
+                class="vendor-section"
+            >
+
+                <div class="vendor-section-header">
+
+                    <div>
+
+                        <span>Payments</span>
+
+                        <h2>Earnings & Payouts</h2>
+
+                        <p>
+                            Track your revenue and payment history.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="vendor-add-btn"
+                        onclick="requestVendorPayout()"
+                    >
+
+                        <i class="fas fa-money-bill-transfer"></i>
+
+                        Request Payout
+
+                    </button>
+
+                </div>
+
+                <div class="vendor-stats-grid">
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon blue">
+
+                            <i class="fas fa-wallet"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Available Balance</span>
+
+                            <h3>₹34,850</h3>
+
+                            <p>
+                                Ready for payout
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon green">
+
+                            <i class="fas fa-chart-line"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>This Month</span>
+
+                            <h3>₹48,400</h3>
+
+                            <p class="vendor-positive">
+
+                                <i class="fas fa-arrow-up"></i>
+
+                                14.2% growth
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon orange">
+
+                            <i class="fas fa-hourglass-half"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Pending Amount</span>
+
+                            <h3>₹8,750</h3>
+
+                            <p>
+                                Under processing
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-stat-card">
+
+                        <div class="vendor-stat-icon pink">
+
+                            <i class="fas fa-building-columns"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Payout</span>
+
+                            <h3>₹89,900</h3>
+
+                            <p>
+                                Lifetime payout
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="vendor-overview-grid">
+
+                    <article class="vendor-panel">
+
+                        <div class="vendor-panel-heading">
+
+                            <div>
+
+                                <h3>Recent Payouts</h3>
+
+                                <p>
+                                    Your latest payment transactions.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="vendor-transaction-list">
+
+                            <div class="vendor-transaction">
+
+                                <div class="vendor-transaction-icon">
+
+                                    <i class="fas fa-building-columns"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>Bank Transfer</strong>
+
+                                    <span>20 July 2026</span>
+
+                                </div>
+
+                                <div class="vendor-transaction-amount">
+
+                                    <strong>₹18,500</strong>
+
+                                    <span class="vendor-status delivered">
+                                        Completed
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="vendor-transaction">
+
+                                <div class="vendor-transaction-icon">
+
+                                    <i class="fas fa-building-columns"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>Bank Transfer</strong>
+
+                                    <span>05 July 2026</span>
+
+                                </div>
+
+                                <div class="vendor-transaction-amount">
+
+                                    <strong>₹24,900</strong>
+
+                                    <span class="vendor-status delivered">
+                                        Completed
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="vendor-transaction">
+
+                                <div class="vendor-transaction-icon">
+
+                                    <i class="fas fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>Payout Request</strong>
+
+                                    <span>25 July 2026</span>
+
+                                </div>
+
+                                <div class="vendor-transaction-amount">
+
+                                    <strong>₹8,750</strong>
+
+                                    <span class="vendor-status pending">
+                                        Processing
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="vendor-panel">
+
+                        <div class="vendor-panel-heading">
+
+                            <div>
+
+                                <h3>Bank Details</h3>
+
+                                <p>
+                                    Payout account information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="vendor-bank-card">
+
+                            <div class="vendor-bank-icon">
+
+                                <i class="fas fa-building-columns"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>Account Holder</span>
+
+                                <strong>Demo Vendor</strong>
+
+                            </div>
+
+                            <div>
+
+                                <span>Account Number</span>
+
+                                <strong>XXXX XXXX 4582</strong>
+
+                            </div>
+
+                            <div>
+
+                                <span>IFSC Code</span>
+
+                                <strong>SBIN0001234</strong>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                onclick="editVendorBankDetails()"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit Details
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 STORE PROFILE SECTION
+            ====================================== -->
+
+            <section
+                id="vendorStore"
+                class="vendor-section"
+            >
+
+                <div class="vendor-section-header">
+
+                    <div>
+
+                        <span>Store Settings</span>
+
+                        <h2>Store Profile</h2>
+
+                        <p>
+                            Manage your store information and contact details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <form
+                    id="vendorStoreForm"
+                    class="vendor-product-form"
+                >
+
+                    <div class="vendor-form-layout">
+
+                        <div class="vendor-form-main">
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-store"></i>
+
+                                    <div>
+
+                                        <h3>Store Information</h3>
+
+                                        <p>
+                                            Update your store name and description.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-form-grid">
+
+                                    <div class="vendor-form-group full-width">
+
+                                        <label for="vendorStoreName">
+
+                                            Store Name
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="vendorStoreName"
+                                            value="ShopEasy Demo Store"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorOwnerName">
+
+                                            Owner Name
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="vendorOwnerName"
+                                            value="Demo Vendor"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorStoreCategory">
+
+                                            Store Category
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <select
+                                            id="vendorStoreCategory"
+                                            required
+                                        >
+
+                                            <option value="Electronics">
+                                                Electronics
+                                            </option>
+
+                                            <option value="Fashion">
+                                                Fashion
+                                            </option>
+
+                                            <option value="Beauty">
+                                                Beauty
+                                            </option>
+
+                                            <option value="Home">
+                                                Home & Kitchen
+                                            </option>
+
+                                            <option value="General">
+                                                General Store
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="vendor-form-group full-width">
+
+                                        <label for="vendorStoreDescription">
+                                            Store Description
+                                        </label>
+
+                                        <textarea
+                                            id="vendorStoreDescription"
+                                            rows="5"
+                                        >ShopEasy Demo Store provides quality products at affordable prices.</textarea>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-address-book"></i>
+
+                                    <div>
+
+                                        <h3>Contact Details</h3>
+
+                                        <p>
+                                            Add your store contact information.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-form-grid">
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorStoreEmail">
+
+                                            Email Address
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            id="vendorStoreEmail"
+                                            value="vendor@shopeasy.com"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group">
+
+                                        <label for="vendorStorePhone">
+
+                                            Phone Number
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            id="vendorStorePhone"
+                                            value="9876543210"
+                                            maxlength="10"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="vendor-form-group full-width">
+
+                                        <label for="vendorStoreAddress">
+
+                                            Store Address
+
+                                            <span>*</span>
+
+                                        </label>
+
+                                        <textarea
+                                            id="vendorStoreAddress"
+                                            rows="4"
+                                            required
+                                        >Hathras, Uttar Pradesh, India</textarea>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                        <aside class="vendor-form-side">
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-store-logo-preview">
+
+                                    <div>
+
+                                        <i class="fas fa-store"></i>
+
+                                    </div>
+
+                                    <h3>ShopEasy Demo Store</h3>
+
+                                    <span>Verified Seller</span>
+
+                                    <p>
+                                        Member since July 2026
+                                    </p>
+
+                                </div>
+
+                            </article>
+
+                            <article class="vendor-form-card">
+
+                                <div class="vendor-form-card-heading">
+
+                                    <i class="fas fa-shield-halved"></i>
+
+                                    <div>
+
+                                        <h3>Verification Status</h3>
+
+                                        <p>
+                                            Your seller account status.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="vendor-verification-list">
+
+                                    <div>
+
+                                        <i class="fas fa-circle-check"></i>
+
+                                        <span>Email Verified</span>
+
+                                    </div>
+
+                                    <div>
+
+                                        <i class="fas fa-circle-check"></i>
+
+                                        <span>Phone Verified</span>
+
+                                    </div>
+
+                                    <div>
+
+                                        <i class="fas fa-circle-check"></i>
+
+                                        <span>Bank Verified</span>
+
+                                    </div>
+
+                                    <div>
+
+                                        <i class="fas fa-circle-check"></i>
+
+                                        <span>Identity Verified</span>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                            <button
+                                type="submit"
+                                class="vendor-publish-btn"
+                            >
+
+                                <i class="fas fa-floppy-disk"></i>
+
+                                Save Store Details
+
+                            </button>
+
+                        </aside>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer><div class="footer-developer"><div class="footer-developer-icon"><i class="fas fa-code"></i></div><div><h3>About Developer</h3><p><strong>Mohit Kumar</strong> is a BCA student and web developer who created ShopEasy as a modern, responsive ecommerce project.</p><div class="footer-developer-links"><a href="mailto:mohitkumar6396105@gmail.com"><i class="fas fa-envelope"></i> mohitkumar6396105@gmail.com</a><a href="https://github.com/monir106" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/monir106</a><a href="about.html"><i class="fas fa-user-code"></i> View Full Profile</a></div></div></div>
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h2>ShopEasy</h2>
+
+                <p>
+                    India's modern shopping website.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="cart.html">Cart</a>
+                    </li>
+
+                    <li>
+                        <a href="wishlist.html">Wishlist</a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html">Profile</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3>Seller Support</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">Seller Help Centre</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Product Guidelines</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Payment Policy</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Return Policy</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3>Follow Us</h3>
+
+                <div class="social">
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                    >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                    >
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="X"
+                    >
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="YouTube"
+                    >
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            <p>
+                © 2026 ShopEasy. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="app.js"></script>
+
+    <script>
+
+        const defaultVendorProducts = [
+
+            {
+                id: 101,
+                name: "Boat Wireless Earbuds",
+                category: "Electronics",
+                price: 1499,
+                oldPrice: 2499,
+                stock: 24,
+                status: "active",
+                image: "images/products/product4.png"
+            },
+
+            {
+                id: 102,
+                name: "Noise Smart Watch",
+                category: "Electronics",
+                price: 2499,
+                oldPrice: 3999,
+                stock: 8,
+                status: "active",
+                image: "images/products/product5.png"
+            },
+
+            {
+                id: 103,
+                name: "Gaming Mouse",
+                category: "Electronics",
+                price: 799,
+                oldPrice: 1499,
+                stock: 0,
+                status: "inactive",
+                image: "images/products/product6.png"
+            },
+
+            {
+                id: 104,
+                name: "Sports Shoes",
+                category: "Fashion",
+                price: 1999,
+                oldPrice: 3499,
+                stock: 15,
+                status: "active",
+                image: "images/products/product7.png"
+            }
+
+        ];
+
+
+        const defaultVendorOrders = [
+
+            {
+                id: "#SE10248",
+                customer: "Amit Kumar",
+                product: "Wireless Earbuds",
+                quantity: 1,
+                total: 1499,
+                payment: "Paid",
+                status: "pending"
+            },
+
+            {
+                id: "#SE10247",
+                customer: "Priya Sharma",
+                product: "Smart Watch",
+                quantity: 1,
+                total: 2499,
+                payment: "Paid",
+                status: "shipped"
+            },
+
+            {
+                id: "#SE10246",
+                customer: "Rahul Singh",
+                product: "Gaming Mouse",
+                quantity: 2,
+                total: 1598,
+                payment: "Paid",
+                status: "delivered"
+            },
+
+            {
+                id: "#SE10245",
+                customer: "Neha Kapoor",
+                product: "Sports Shoes",
+                quantity: 1,
+                total: 1999,
+                payment: "Refunded",
+                status: "cancelled"
+            }
+
+        ];
+
+
+        let vendorProducts = JSON.parse(
+            localStorage.getItem("vendorProducts")
+        ) || defaultVendorProducts;
+
+        let vendorOrders = JSON.parse(
+            localStorage.getItem("vendorOrders")
+        ) || defaultVendorOrders;
+
+
+        function saveVendorProducts() {
+
+            localStorage.setItem(
+                "vendorProducts",
+                JSON.stringify(vendorProducts)
+            );
+
+        }
+
+
+        function saveVendorOrders() {
+
+            localStorage.setItem(
+                "vendorOrders",
+                JSON.stringify(vendorOrders)
+            );
+
+        }
+
+
+        function openVendorSection(sectionId) {
+
+            document
+                .querySelectorAll(".vendor-section")
+                .forEach(section => {
+
+                    section.classList.remove("active");
+
+                });
+
+            document
+                .querySelectorAll(".vendor-menu-btn")
+                .forEach(button => {
+
+                    button.classList.remove("active");
+
+                });
+
+            const selectedSection = document.getElementById(
+                sectionId
+            );
+
+            if (selectedSection) {
+
+                selectedSection.classList.add("active");
+
+            }
+
+            const selectedButton = document.querySelector(
+                `[data-section="${sectionId}"]`
+            );
+
+            if (selectedButton) {
+
+                selectedButton.classList.add("active");
+
+            }
+
+            window.scrollTo({
+
+                top: 0,
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        function connectVendorMenu() {
+
+            document
+                .querySelectorAll(".vendor-menu-btn")
+                .forEach(button => {
+
+                    button.addEventListener("click", () => {
+
+                        openVendorSection(
+                            button.dataset.section
+                        );
+
+                    });
+
+                });
+
+        }
+
+
+        function getVendorStockStatus(stock) {
+
+            if (stock === 0) {
+
+                return {
+                    text: "Out of Stock",
+                    className: "cancelled"
+                };
+
+            }
+
+            if (stock <= 10) {
+
+                return {
+                    text: "Low Stock",
+                    className: "pending"
+                };
+
+            }
+
+            return {
+                text: "In Stock",
+                className: "delivered"
+            };
+
+        }
+
+
+        function renderVendorProducts(
+            productData = vendorProducts
+        ) {
+
+            const productList = document.getElementById(
+                "vendorProductList"
+            );
+
+            if (!productList) {
+                return;
+            }
+
+            productList.innerHTML = "";
+
+            if (productData.length === 0) {
+
+                productList.innerHTML = `
+
+                    <div class="empty-box">
+
+                        <i class="fas fa-box-open"></i>
+
+                        <h2>No products found</h2>
+
+                        <p>
+                            Search ya filter change karke dekhein.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+            productData.forEach(product => {
+
+                const stockStatus = getVendorStockStatus(
+                    Number(product.stock)
+                );
+
+                productList.innerHTML += `
+
+                    <article class="vendor-product-item">
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            onerror="this.src='https://placehold.co/180x180?text=Product'"
+                        >
+
+                        <div class="vendor-product-info">
+
+                            <span>
+                                ${product.category}
+                            </span>
+
+                            <h3>
+                                ${product.name}
+                            </h3>
+
+                            <p>
+                                Product ID: #VP${product.id}
+                            </p>
+
+                        </div>
+
+                        <div class="vendor-product-price">
+
+                            <span>Price</span>
+
+                            <strong>
+                                ${formatPrice(product.price)}
+                            </strong>
+
+                            <del>
+                                ${formatPrice(product.oldPrice || product.price)}
+                            </del>
+
+                        </div>
+
+                        <div class="vendor-product-stock">
+
+                            <span>Stock</span>
+
+                            <strong>
+                                ${product.stock}
+                            </strong>
+
+                            <small class="vendor-status ${stockStatus.className}">
+                                ${stockStatus.text}
+                            </small>
+
+                        </div>
+
+                        <div class="vendor-product-actions">
+
+                            <button
+                                type="button"
+                                onclick="editVendorProduct(${product.id})"
+                                title="Edit product"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                            </button>
+
+                            <button
+                                type="button"
+                                onclick="deleteVendorProduct(${product.id})"
+                                title="Delete product"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            });
+
+        }
+
+
+        function filterVendorProducts() {
+
+            const searchValue = document
+                .getElementById("vendorProductSearch")
+                .value
+                .trim()
+                .toLowerCase();
+
+            const categoryValue = document
+                .getElementById("vendorCategoryFilter")
+                .value;
+
+            const stockValue = document
+                .getElementById("vendorStockFilter")
+                .value;
+
+            const filteredProducts = vendorProducts.filter(
+                product => {
+
+                    const matchesSearch =
+                        product.name
+                            .toLowerCase()
+                            .includes(searchValue) ||
+                        product.category
+                            .toLowerCase()
+                            .includes(searchValue);
+
+                    const matchesCategory =
+                        categoryValue === "all" ||
+                        product.category === categoryValue;
+
+                    let matchesStock = true;
+
+                    if (stockValue === "instock") {
+
+                        matchesStock =
+                            Number(product.stock) > 10;
+
+                    }
+
+                    if (stockValue === "lowstock") {
+
+                        matchesStock =
+                            Number(product.stock) > 0 &&
+                            Number(product.stock) <= 10;
+
+                    }
+
+                    if (stockValue === "outofstock") {
+
+                        matchesStock =
+                            Number(product.stock) === 0;
+
+                    }
+
+                    return (
+                        matchesSearch &&
+                        matchesCategory &&
+                        matchesStock
+                    );
+
+                }
+            );
+
+            renderVendorProducts(filteredProducts);
+
+        }
+
+
+        function connectVendorProductFilters() {
+
+            const searchInput = document.getElementById(
+                "vendorProductSearch"
+            );
+
+            const categoryFilter = document.getElementById(
+                "vendorCategoryFilter"
+            );
+
+            const stockFilter = document.getElementById(
+                "vendorStockFilter"
+            );
+
+            if (searchInput) {
+
+                searchInput.addEventListener(
+                    "input",
+                    filterVendorProducts
+                );
+
+            }
+
+            if (categoryFilter) {
+
+                categoryFilter.addEventListener(
+                    "change",
+                    filterVendorProducts
+                );
+
+            }
+
+            if (stockFilter) {
+
+                stockFilter.addEventListener(
+                    "change",
+                    filterVendorProducts
+                );
+
+            }
+
+        }
+
+
+        function updateVendorProductPreview() {
+
+            const name = document.getElementById(
+                "vendorProductName"
+            ).value.trim();
+
+            const category = document.getElementById(
+                "vendorProductCategory"
+            ).value;
+
+            const price = Number(
+                document.getElementById(
+                    "vendorProductPrice"
+                ).value
+            );
+
+            const oldPrice = Number(
+                document.getElementById(
+                    "vendorProductOldPrice"
+                ).value
+            );
+
+            const image = document.getElementById(
+                "vendorProductImage"
+            ).value.trim();
+
+            document.getElementById(
+                "vendorPreviewName"
+            ).textContent = name || "Product Name";
+
+            document.getElementById(
+                "vendorPreviewCategory"
+            ).textContent = category || "Product Category";
+
+            document.getElementById(
+                "vendorPreviewPrice"
+            ).textContent = formatPrice(price || 0);
+
+            document.getElementById(
+                "vendorPreviewOldPrice"
+            ).textContent = formatPrice(oldPrice || 0);
+
+            document.getElementById(
+                "vendorPreviewImage"
+            ).src = image ||
+                "https://placehold.co/500x400?text=Product+Preview";
+
+        }
+
+
+        function connectVendorPreview() {
+
+            const previewInputs = [
+
+                "vendorProductName",
+                "vendorProductCategory",
+                "vendorProductPrice",
+                "vendorProductOldPrice",
+                "vendorProductImage"
+
+            ];
+
+            previewInputs.forEach(inputId => {
+
+                const input = document.getElementById(
+                    inputId
+                );
+
+                if (input) {
+
+                    input.addEventListener(
+                        "input",
+                        updateVendorProductPreview
+                    );
+
+                    input.addEventListener(
+                        "change",
+                        updateVendorProductPreview
+                    );
+
+                }
+
+            });
+
+        }
+
+
+        function connectVendorProductForm() {
+
+            const productForm = document.getElementById(
+                "vendorProductForm"
+            );
+
+            if (!productForm) {
+                return;
+            }
+
+            productForm.addEventListener(
+                "submit",
+                event => {
+
+                    event.preventDefault();
+
+                    const name = document.getElementById(
+                        "vendorProductName"
+                    ).value.trim();
+
+                    const category = document.getElementById(
+                        "vendorProductCategory"
+                    ).value;
+
+                    const price = Number(
+                        document.getElementById(
+                            "vendorProductPrice"
+                        ).value
+                    );
+
+                    const oldPrice = Number(
+                        document.getElementById(
+                            "vendorProductOldPrice"
+                        ).value
+                    ) || price;
+
+                    const stock = Number(
+                        document.getElementById(
+                            "vendorProductStock"
+                        ).value
+                    );
+
+                    const image = document.getElementById(
+                        "vendorProductImage"
+                    ).value.trim();
+
+                    const status = document.getElementById(
+                        "vendorProductStatus"
+                    ).value;
+
+                    const product = {
+
+                        id: Date.now(),
+                        name,
+                        category,
+                        price,
+                        oldPrice,
+                        stock,
+                        image,
+                        status
+
+                    };
+
+                    vendorProducts.unshift(product);
+
+                    saveVendorProducts();
+
+                    renderVendorProducts();
+
+                    resetVendorProductForm();
+
+                    openVendorSection(
+                        "vendorProducts"
+                    );
+
+                    showNotification(
+                        "Product successfully publish ho gaya."
+                    );
+
+                }
+            );
+
+        }
+
+
+        function resetVendorProductForm() {
+
+            const productForm = document.getElementById(
+                "vendorProductForm"
+            );
+
+            if (productForm) {
+
+                productForm.reset();
+
+            }
+
+            updateVendorProductPreview();
+
+        }
+
+
+        function deleteVendorProduct(productId) {
+
+            const confirmed = confirm(
+                "Kya aap is product ko delete karna chahte hain?"
+            );
+
+            if (!confirmed) {
+                return;
+            }
+
+            vendorProducts = vendorProducts.filter(
+                product => product.id !== productId
+            );
+
+            saveVendorProducts();
+
+            renderVendorProducts();
+
+            showNotification(
+                "Product delete ho gaya."
+            );
+
+        }
+
+
+        function editVendorProduct(productId) {
+
+            const product = vendorProducts.find(
+                item => item.id === productId
+            );
+
+            if (!product) {
+                return;
+            }
+
+            openVendorSection(
+                "vendorAddProduct"
+            );
+
+            document.getElementById(
+                "vendorProductName"
+            ).value = product.name;
+
+            document.getElementById(
+                "vendorProductCategory"
+            ).value = product.category;
+
+            document.getElementById(
+                "vendorProductPrice"
+            ).value = product.price;
+
+            document.getElementById(
+                "vendorProductOldPrice"
+            ).value = product.oldPrice;
+
+            document.getElementById(
+                "vendorProductStock"
+            ).value = product.stock;
+
+            document.getElementById(
+                "vendorProductImage"
+            ).value = product.image;
+
+            updateVendorProductPreview();
+
+            vendorProducts = vendorProducts.filter(
+                item => item.id !== productId
+            );
+
+            saveVendorProducts();
+
+            showNotification(
+                "Product details form me load ho gayi hain."
+            );
+
+        }
+
+
+        function renderVendorOrders(
+            orderData = vendorOrders
+        ) {
+
+            const orderTable = document.getElementById(
+                "vendorOrdersTable"
+            );
+
+            if (!orderTable) {
+                return;
+            }
+
+            orderTable.innerHTML = "";
+
+            if (orderData.length === 0) {
+
+                orderTable.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="8">
+
+                            <div class="empty-box">
+
+                                <i class="fas fa-bag-shopping"></i>
+
+                                <h2>No orders found</h2>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+            orderData.forEach(order => {
+
+                orderTable.innerHTML += `
+
+                    <tr>
+
+                        <td>${order.id}</td>
+
+                        <td>${order.customer}</td>
+
+                        <td>${order.product}</td>
+
+                        <td>${order.quantity}</td>
+
+                        <td>${formatPrice(order.total)}</td>
+
+                        <td>${order.payment}</td>
+
+                        <td>
+
+                            <span class="vendor-status ${order.status}">
+
+                                ${
+                                    order.status
+                                        .charAt(0)
+                                        .toUpperCase() +
+                                    order.status.slice(1)
+                                }
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <select
+                                class="vendor-status-select"
+                                onchange="updateVendorOrderStatus(
+                                    '${order.id}',
+                                    this.value
+                                )"
+                            >
+
+                                <option
+                                    value="pending"
+                                    ${
+                                        order.status === "pending"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Pending
+                                </option>
+
+                                <option
+                                    value="shipped"
+                                    ${
+                                        order.status === "shipped"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Shipped
+                                </option>
+
+                                <option
+                                    value="delivered"
+                                    ${
+                                        order.status === "delivered"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Delivered
+                                </option>
+
+                                <option
+                                    value="cancelled"
+                                    ${
+                                        order.status === "cancelled"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            });
+
+        }
+
+
+        function updateVendorOrderStatus(
+            orderId,
+            newStatus
+        ) {
+
+            const order = vendorOrders.find(
+                item => item.id === orderId
+            );
+
+            if (!order) {
+                return;
+            }
+
+            order.status = newStatus;
+
+            saveVendorOrders();
+
+            renderVendorOrders();
+
+            showNotification(
+                "Order status update ho gaya."
+            );
+
+        }
+
+
+        function connectVendorOrderFilters() {
+
+            document
+                .querySelectorAll(
+                    ".vendor-order-filter-btn"
+                )
+                .forEach(button => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            document
+                                .querySelectorAll(
+                                    ".vendor-order-filter-btn"
+                                )
+                                .forEach(item => {
+
+                                    item.classList.remove(
+                                        "active"
+                                    );
+
+                                });
+
+                            button.classList.add(
+                                "active"
+                            );
+
+                            const status =
+                                button.dataset.status;
+
+                            if (status === "all") {
+
+                                renderVendorOrders(
+                                    vendorOrders
+                                );
+
+                                return;
+
+                            }
+
+                            const filteredOrders =
+                                vendorOrders.filter(
+                                    order =>
+                                        order.status === status
+                                );
+
+                            renderVendorOrders(
+                                filteredOrders
+                            );
+
+                        }
+                    );
+
+                });
+
+        }
+
+
+        function connectVendorStoreForm() {
+
+            const storeForm = document.getElementById(
+                "vendorStoreForm"
+            );
+
+            if (!storeForm) {
+                return;
+            }
+
+            storeForm.addEventListener(
+                "submit",
+                event => {
+
+                    event.preventDefault();
+
+                    const storeData = {
+
+                        storeName: document.getElementById(
+                            "vendorStoreName"
+                        ).value.trim(),
+
+                        ownerName: document.getElementById(
+                            "vendorOwnerName"
+                        ).value.trim(),
+
+                        category: document.getElementById(
+                            "vendorStoreCategory"
+                        ).value,
+
+                        description: document.getElementById(
+                            "vendorStoreDescription"
+                        ).value.trim(),
+
+                        email: document.getElementById(
+                            "vendorStoreEmail"
+                        ).value.trim(),
+
+                        phone: document.getElementById(
+                            "vendorStorePhone"
+                        ).value.trim(),
+
+                        address: document.getElementById(
+                            "vendorStoreAddress"
+                        ).value.trim()
+
+                    };
+
+                    localStorage.setItem(
+                        "vendorStoreData",
+                        JSON.stringify(storeData)
+                    );
+
+                    document.getElementById(
+                        "vendorDisplayName"
+                    ).textContent = storeData.ownerName;
+
+                    document.getElementById(
+                        "vendorWelcomeName"
+                    ).textContent = storeData.ownerName;
+
+                    showNotification(
+                        "Store details successfully save ho gayi."
+                    );
+
+                }
+            );
+
+        }
+
+
+        function loadVendorStoreData() {
+
+            const storeData = JSON.parse(
+                localStorage.getItem(
+                    "vendorStoreData"
+                )
+            );
+
+            if (!storeData) {
+                return;
+            }
+
+            document.getElementById(
+                "vendorStoreName"
+            ).value = storeData.storeName;
+
+            document.getElementById(
+                "vendorOwnerName"
+            ).value = storeData.ownerName;
+
+            document.getElementById(
+                "vendorStoreCategory"
+            ).value = storeData.category;
+
+            document.getElementById(
+                "vendorStoreDescription"
+            ).value = storeData.description;
+
+            document.getElementById(
+                "vendorStoreEmail"
+            ).value = storeData.email;
+
+            document.getElementById(
+                "vendorStorePhone"
+            ).value = storeData.phone;
+
+            document.getElementById(
+                "vendorStoreAddress"
+            ).value = storeData.address;
+
+            document.getElementById(
+                "vendorDisplayName"
+            ).textContent = storeData.ownerName;
+
+            document.getElementById(
+                "vendorWelcomeName"
+            ).textContent = storeData.ownerName;
+
+        }
+
+
+        function vendorSupportMessage() {
+
+            showNotification(
+                "Seller support demo mode me available hai."
+            );
+
+        }
+
+
+        function vendorNotificationMessage() {
+
+            showNotification(
+                "Aapke paas 3 new seller notifications hain."
+            );
+
+        }
+
+
+        function requestVendorPayout() {
+
+            showNotification(
+                "Payout request successfully submit ho gayi."
+            );
+
+        }
+
+
+        function editVendorBankDetails() {
+
+            showNotification(
+                "Bank details editing demo mode me available hai."
+            );
+
+        }
+
+
+        function downloadVendorOrders() {
+
+            const orderText = vendorOrders
+                .map(order => {
+
+                    return [
+                        order.id,
+                        order.customer,
+                        order.product,
+                        order.quantity,
+                        order.total,
+                        order.payment,
+                        order.status
+                    ].join(",");
+
+                })
+                .join("\n");
+
+            const csvContent = [
+                "Order ID,Customer,Product,Quantity,Total,Payment,Status",
+                orderText
+            ].join("\n");
+
+            const fileBlob = new Blob(
+                [csvContent],
+                {
+                    type: "text/csv"
+                }
+            );
+
+            const downloadUrl = URL.createObjectURL(
+                fileBlob
+            );
+
+            const downloadLink =
+                document.createElement("a");
+
+            downloadLink.href = downloadUrl;
+
+            downloadLink.download =
+                "ShopEasy-Vendor-Orders.csv";
+
+            downloadLink.click();
+
+            URL.revokeObjectURL(downloadUrl);
+
+            showNotification(
+                "Orders CSV file download ho gayi."
+            );
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                saveVendorProducts();
+
+                saveVendorOrders();
+
+                connectVendorMenu();
+
+                connectVendorProductFilters();
+
+                connectVendorPreview();
+
+                connectVendorProductForm();
+
+                connectVendorOrderFilters();
+
+                connectVendorStoreForm();
+
+                loadVendorStoreData();
+
+                renderVendorProducts();
+
+                renderVendorOrders();
+
+                updateVendorProductPreview();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

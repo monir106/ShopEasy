@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="index.html"><h2>ShopEasy</h2></a></div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <div class="search">
+      <input type="text" placeholder="Search products..." id="search">
+      <button type="button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="right">
+      <button id="themeBtn" type="button" aria-label="Change theme"><i class="fa-solid fa-moon"></i></button>
+      <a href="login.html"><i class="fa-regular fa-user"></i><span>Login</span></a>
+      <a href="wishlist.html"><i class="fa-regular fa-heart"></i><span>Wishlist</span><b class="count" id="wishlistCount">0</b></a>
+      <a href="orders.html"><i class="fas fa-box-open"></i><span>Orders</span></a><a href="cart.html" class="cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span><b class="count" id="cartCount">0</b></a>
+    </div>
+  </header>
+
+  <nav id="mainNav">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#best-sellers">Best Sellers</a></li>
+      <li><a href="#flash-sale">Flash Sale</a></li>
+      <li><a href="#trending">Trending</a></li>
+      <li><a href="vendor.html">Vendor</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero-slider" id="home" aria-label="Featured offers">
+      <div class="hero-slide active">
+        <div class="hero-text">
+          <span class="hero-kicker">Biggest Deals of the Season</span>
+          <h1>Mega Sale</h1>
+          <h2>Up To 70% OFF</h2>
+          <p>Everything you need, delivered at prices you will love.</p>
+          <button type="button" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+        </div>
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1200&q=85" alt="Mega sale shopping offer"></div>
+      </div>
+      <div class="hero-slide">
+        <div class="hero-text">
+          <span class="hero-kicker">Latest Technology</span>
+          <h1>Smart Gadgets</h1>
+          <h2>Starting ₹799</h2>
+          <p>Upgrade your everyday life with trending electronics.</p>
+          <button type="button" onclick="filterHomeCategory('Electronics')">Explore Electronics</button>
+        </div>
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1200&q=85" alt="Latest electronic gadgets"></div>
+      </div>
+      <div class="hero-slide">
+        <div class="hero-text">
+          <span class="hero-kicker">Style Refresh</span>
+          <h1>New Fashion</h1>
+          <h2>Min. 40% OFF</h2>
+          <p>Fresh looks, premium style and prices made for you.</p>
+          <button type="button" onclick="filterHomeCategory('Fashion')">Shop Fashion</button>
+        </div>
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=85" alt="New fashion collection"></div>
+      </div>
+      <button class="slider-arrow slider-prev" type="button" aria-label="Previous offer"><i class="fas fa-chevron-left"></i></button>
+      <button class="slider-arrow slider-next" type="button" aria-label="Next offer"><i class="fas fa-chevron-right"></i></button>
+      <div class="slider-dots" aria-label="Choose offer"></div>
+    </section>
+
+    <section class="category" id="categories">
+      <h2>Shop By Category</h2>
+      <div class="category-grid">
+        <div class="cat" data-category="Mobiles"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80" alt="Mobiles"><p>Mobiles</p></div>
+        <div class="cat" data-category="Laptop"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80" alt="Laptops"><p>Laptops</p></div>
+        <div class="cat" data-category="Fashion"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=500&q=80" alt="Fashion"><p>Fashion</p></div>
+        <div class="cat" data-category="Beauty"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80" alt="Beauty"><p>Beauty</p></div>
+        <div class="cat" data-category="Electronics"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=500&q=80" alt="Electronics"><p>Electronics</p></div>
+        <div class="cat" data-category="All"><img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=500&q=80" alt="All products"><p>All Products</p></div>
+      </div>
+    </section>
+
+    <section class="products" id="featured">
+      <div class="title">
+        <div><h2>Featured Products</h2><p>Popular picks selected for you.</p></div>
+        <a href="#featured" onclick="resetProductSearch(); return false;">View All</a>
+      </div>
+      <div id="productGrid"></div>
+    </section>
+
+    <section class="products showcase-section" id="best-sellers">
+      <div class="title"><div><h2>🏆 Best Sellers</h2><p>Most-loved products our customers keep choosing.</p></div><a href="#featured">View All</a></div>
+      <div id="bestSellerProducts" class="showcase-grid"></div>
+    </section>
+
+    <section class="products showcase-section" id="new-arrivals">
+      <div class="title"><div><h2>🆕 New Arrivals</h2><p>Fresh additions to upgrade your shopping list.</p></div><a href="#featured">View All</a></div>
+      <div id="newArrivalProducts" class="showcase-grid"></div>
+    </section>
+
+    <section class="flash-sale" id="flash-sale">
+      <div class="title"><h2>🔥 Flash Sale</h2><a href="#featured">View All</a></div>
+      <div class="flash-grid">
+        <div class="offer-card"><img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80" alt="Wireless earbuds"><h3>Wireless Earbuds</h3><p class="old-price">₹2,999</p><p class="new-price">₹1,499</p><button type="button" onclick="addCart(4)">Add To Cart</button></div>
+        <div class="offer-card"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Smart watch"><h3>Smart Watch</h3><p class="old-price">₹4,999</p><p class="new-price">₹2,499</p><button type="button" onclick="addCart(5)">Add To Cart</button></div>
+        <div class="offer-card"><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600&q=80" alt="Bluetooth speaker"><h3>Bluetooth Speaker</h3><p class="old-price">₹1,999</p><p class="new-price">₹999</p><button type="button" onclick="addCart(6)">Add To Cart</button></div>
+        <div class="offer-card"><img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=600&q=80" alt="Gaming mouse"><h3>Gaming Mouse</h3><p class="old-price">₹1,499</p><p class="new-price">₹799</p><button type="button" onclick="addCart(6)">Add To Cart</button></div>
+      </div>
+    </section>
+
+    <section class="trending" id="trending">
+      <div class="title"><h2>⭐ Trending Products</h2><a href="#featured">View All</a></div>
+      <div id="trendingProducts"></div>
+    </section>
+
+    <section class="big-offer" id="offers">
+      <div class="offer-left"><h1>BIG FESTIVAL SALE</h1><h2>Up To 80% OFF</h2><p>Limited-time deals on top brands.</p><button type="button" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">Shop Now</button></div>
+      <div class="offer-right"><img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1000&q=85" alt="Festival sale" onerror="this.src='https://placehold.co/900x600/ec4899/ffffff?text=FESTIVAL+SALE'"></div>
+    </section>
+
+    <section class="brands-section" id="brands">
+      <div class="title"><div><h2>Top Brands</h2><p>Trusted names, premium quality and great value.</p></div></div>
+      <div class="brand-grid">
+        <div class="brand-card"><i class="fab fa-apple"></i><span>Apple</span></div>
+        <div class="brand-card"><i class="fas fa-mobile-screen-button"></i><span>Samsung</span></div>
+        <div class="brand-card"><i class="fas fa-laptop"></i><span>HP</span></div>
+        <div class="brand-card"><i class="fas fa-headphones"></i><span>boAt</span></div>
+        <div class="brand-card"><i class="fas fa-shoe-prints"></i><span>SportX</span></div>
+        <div class="brand-card"><i class="fas fa-wand-magic-sparkles"></i><span>GlowUp</span></div>
+      </div>
+    </section>
+
+    <section class="reviews-section" id="reviews">
+      <div class="title"><div><h2>What Customers Say</h2><p>Real experiences from happy ShopEasy shoppers.</p></div></div>
+      <div class="review-grid">
+        <article class="review-card"><div class="review-stars">★★★★★</div><p>“Product quality bahut achhi thi aur delivery expected time se pehle ho gayi.”</p><div class="review-user"><span>RK</span><div><strong>Rahul Kumar</strong><small>Verified Buyer</small></div></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><p>“Mobile par website fast chalti hai. Cart aur wishlist use karna bahut easy hai.”</p><div class="review-user"><span>PS</span><div><strong>Priya Sharma</strong><small>Verified Buyer</small></div></div></article>
+        <article class="review-card"><div class="review-stars">★★★★☆</div><p>“Deals aur product selection dono impressive hain. Shopping experience premium laga.”</p><div class="review-user"><span>AM</span><div><strong>Aman Mehta</strong><small>Verified Buyer</small></div></div></article>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h2>Subscribe Newsletter</h2><p>Get the latest offers directly in your inbox.</p>
+      <div class="newsletter-box"><input type="email" placeholder="Enter your email"><button type="button" onclick="showNotification('Thank you for subscribing!')">Subscribe</button></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-developer"><div class="footer-developer-icon"><i class="fas fa-code"></i></div><div><h3>About Developer</h3><p><strong>Mohit Kumar</strong> is a BCA student and web developer who created ShopEasy as a modern, responsive ecommerce project.</p><div class="footer-developer-links"><a href="mailto:mohitkumar6396105@gmail.com"><i class="fas fa-envelope"></i> mohitkumar6396105@gmail.com</a><a href="https://github.com/monir106" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/monir106</a><a href="about.html"><i class="fas fa-user-code"></i> View Full Profile</a></div></div></div>
+    <div class="footer-grid">
+      <div><h2>ShopEasy</h2><p>India's modern shopping website.</p></div>
+      <div><h3>Quick Links</h3><ul><li><a href="#home">Home</a></li><li><a href="#featured">Products</a></li><li><a href="#offers">Offers</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+      <div><h3>Customer Care</h3><ul><li><a href="#">Help Centre</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li><li><a href="#">Return Policy</a></li></ul></div>
+      <div><h3>Follow Us</h3><div class="social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+    </div>
+    <div class="copyright"><p>© 2026 ShopEasy. All Rights Reserved. | Designed &amp; Developed with ❤️ by Mohit Kumar</p></div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <script src="app.js"></script>
+</body>
+</html>

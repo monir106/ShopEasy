@@ -1,0 +1,4523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ShopEasy Pro admin dashboard for managing users, products, vendors, orders and website settings."
+    >
+
+    <title>Admin Dashboard | ShopEasy Pro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="admin-body">
+
+    <!-- =====================================
+         WEBSITE HEADER
+    ====================================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <h2>ShopEasy</h2>
+
+            </a>
+
+        </div>
+
+        <div class="search">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search for products..."
+            >
+
+            <button
+                type="button"
+                aria-label="Search"
+            >
+
+                <i class="fas fa-search"></i>
+
+            </button>
+
+        </div>
+
+        <div class="right">
+
+            <button
+                id="themeBtn"
+                type="button"
+                aria-label="Change theme"
+            >
+
+                <i class="fas fa-moon"></i>
+
+            </button>
+
+            <a href="login.html">
+
+                <i class="fas fa-user"></i>
+
+                <span>Login</span>
+
+            </a>
+
+            <a href="wishlist.html">
+
+                <i class="fas fa-heart"></i>
+
+                <span>Wishlist</span>
+
+                <b
+                    class="count"
+                    id="wishlistCount"
+                >
+                    0
+                </b>
+
+            </a>
+
+            <a
+                href="cart.html"
+                class="cart"
+            >
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>Cart</span>
+
+                <b
+                    class="count"
+                    id="cartCount"
+                >
+                    0
+                </b>
+
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="index.html#categories">Categories</a>
+            </li>
+
+            <li>
+                <a href="index.html#featured">Featured</a>
+            </li>
+
+            <li>
+                <a href="index.html#offers">Offers</a>
+            </li>
+
+            <li>
+                <a href="vendor.html">Vendor</a>
+            </li>
+
+            <li>
+                <a
+                    href="admin.html"
+                    class="active"
+                >
+                    Admin
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- =====================================
+         ADMIN DASHBOARD
+    ====================================== -->
+
+    <main class="admin-dashboard">
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-sidebar-brand">
+
+                <div class="admin-brand-icon">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Admin Panel</h3>
+
+                    <p>ShopEasy Control</p>
+
+                </div>
+
+            </div>
+
+            <div class="admin-profile-mini">
+
+                <div class="admin-avatar">
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        ShopEasy Admin
+                    </strong>
+
+                    <span>
+                        Super Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+            <ul class="admin-menu">
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn active"
+                        data-section="adminOverview"
+                    >
+
+                        <i class="fas fa-chart-line"></i>
+
+                        <span>Dashboard</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn"
+                        data-section="adminProducts"
+                    >
+
+                        <i class="fas fa-boxes-stacked"></i>
+
+                        <span>Products</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn"
+                        data-section="adminOrders"
+                    >
+
+                        <i class="fas fa-bag-shopping"></i>
+
+                        <span>Orders</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn"
+                        data-section="adminUsers"
+                    >
+
+                        <i class="fas fa-users"></i>
+
+                        <span>Customers</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn"
+                        data-section="adminVendors"
+                    >
+
+                        <i class="fas fa-store"></i>
+
+                        <span>Vendors</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn"
+                        data-section="adminCategories"
+                    >
+
+                        <i class="fas fa-layer-group"></i>
+
+                        <span>Categories</span>
+
+                    </button>
+
+                </li>
+
+                <li>
+
+                    <button
+                        type="button"
+                        class="admin-menu-btn"
+                        data-section="adminSettings"
+                    >
+
+                        <i class="fas fa-gear"></i>
+
+                        <span>Settings</span>
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+            <div class="admin-security-card">
+
+                <i class="fas fa-lock"></i>
+
+                <div>
+
+                    <strong>Secure Panel</strong>
+
+                    <p>
+                        Demo admin controls active.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a
+                href="index.html"
+                class="admin-back-home"
+            >
+
+                <i class="fas fa-arrow-left"></i>
+
+                Back to Website
+
+            </a>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <section class="admin-main-content">
+
+            <!-- TOPBAR -->
+
+            <div class="admin-topbar">
+
+                <div>
+
+                    <p>
+                        Welcome to ShopEasy
+                    </p>
+
+                    <h1>
+                        Admin Dashboard
+                    </h1>
+
+                </div>
+
+                <div class="admin-topbar-actions">
+
+                    <button
+                        type="button"
+                        class="admin-notification-btn"
+                        onclick="showAdminNotifications()"
+                    >
+
+                        <i class="fas fa-bell"></i>
+
+                        <span>5</span>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-primary-btn"
+                        onclick="openAdminSection('adminProducts')"
+                    >
+
+                        <i class="fas fa-box"></i>
+
+                        Manage Products
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================
+                 OVERVIEW
+            ====================================== -->
+
+            <section
+                id="adminOverview"
+                class="admin-section active"
+            >
+
+                <div class="admin-hero">
+
+                    <div class="admin-hero-content">
+
+                        <span>
+                            Website Control Centre
+                        </span>
+
+                        <h2>
+                            Manage your complete e-commerce website
+                        </h2>
+
+                        <p>
+                            Track revenue, orders, customers, products
+                            and vendors from one powerful dashboard.
+                        </p>
+
+                        <button
+                            type="button"
+                            onclick="openAdminSection('adminOrders')"
+                        >
+
+                            <i class="fas fa-arrow-trend-up"></i>
+
+                            View Latest Orders
+
+                        </button>
+
+                    </div>
+
+                    <div class="admin-hero-art">
+
+                        <div class="admin-art-circle first"></div>
+
+                        <div class="admin-art-circle second"></div>
+
+                        <i class="fas fa-chart-pie"></i>
+
+                    </div>
+
+                </div>
+
+                <!-- STATISTICS -->
+
+                <div class="admin-stats-grid">
+
+                    <article class="admin-stat-card">
+
+                        <div class="admin-stat-icon revenue">
+
+                            <i class="fas fa-indian-rupee-sign"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Revenue</span>
+
+                            <h3 id="adminTotalRevenue">
+                                ₹8,75,420
+                            </h3>
+
+                            <p class="admin-growth">
+
+                                <i class="fas fa-arrow-up"></i>
+
+                                18.4% this month
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="admin-stat-card">
+
+                        <div class="admin-stat-icon orders">
+
+                            <i class="fas fa-bag-shopping"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Orders</span>
+
+                            <h3 id="adminTotalOrders">
+                                1,248
+                            </h3>
+
+                            <p class="admin-growth">
+
+                                <i class="fas fa-arrow-up"></i>
+
+                                42 new today
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="admin-stat-card">
+
+                        <div class="admin-stat-icon customers">
+
+                            <i class="fas fa-users"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Customers</span>
+
+                            <h3 id="adminTotalCustomers">
+                                3,620
+                            </h3>
+
+                            <p class="admin-growth">
+
+                                <i class="fas fa-user-plus"></i>
+
+                                86 new users
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="admin-stat-card">
+
+                        <div class="admin-stat-icon products">
+
+                            <i class="fas fa-boxes-stacked"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Products</span>
+
+                            <h3 id="adminTotalProducts">
+                                486
+                            </h3>
+
+                            <p>
+
+                                <i class="fas fa-triangle-exclamation"></i>
+
+                                12 low stock
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- SALES AND ACTIVITY -->
+
+                <div class="admin-overview-grid">
+
+                    <article class="admin-panel">
+
+                        <div class="admin-panel-heading">
+
+                            <div>
+
+                                <h3>Revenue Analytics</h3>
+
+                                <p>
+                                    Monthly website revenue
+                                </p>
+
+                            </div>
+
+                            <select
+                                id="adminRevenuePeriod"
+                                aria-label="Revenue period"
+                            >
+
+                                <option value="6months">
+                                    Last 6 Months
+                                </option>
+
+                                <option value="year">
+                                    This Year
+                                </option>
+
+                                <option value="month">
+                                    This Month
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="admin-chart-area">
+
+                            <div class="admin-chart-values">
+
+                                <span>₹2L</span>
+
+                                <span>₹1.5L</span>
+
+                                <span>₹1L</span>
+
+                                <span>₹50k</span>
+
+                                <span>₹0</span>
+
+                            </div>
+
+                            <div class="admin-chart-bars">
+
+                                <div class="admin-chart-group">
+
+                                    <div
+                                        class="admin-chart-bar"
+                                        style="height: 48%;"
+                                    ></div>
+
+                                    <span>Feb</span>
+
+                                </div>
+
+                                <div class="admin-chart-group">
+
+                                    <div
+                                        class="admin-chart-bar"
+                                        style="height: 58%;"
+                                    ></div>
+
+                                    <span>Mar</span>
+
+                                </div>
+
+                                <div class="admin-chart-group">
+
+                                    <div
+                                        class="admin-chart-bar"
+                                        style="height: 66%;"
+                                    ></div>
+
+                                    <span>Apr</span>
+
+                                </div>
+
+                                <div class="admin-chart-group">
+
+                                    <div
+                                        class="admin-chart-bar"
+                                        style="height: 72%;"
+                                    ></div>
+
+                                    <span>May</span>
+
+                                </div>
+
+                                <div class="admin-chart-group">
+
+                                    <div
+                                        class="admin-chart-bar"
+                                        style="height: 84%;"
+                                    ></div>
+
+                                    <span>Jun</span>
+
+                                </div>
+
+                                <div class="admin-chart-group">
+
+                                    <div
+                                        class="admin-chart-bar active"
+                                        style="height: 94%;"
+                                    ></div>
+
+                                    <span>Jul</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="admin-panel">
+
+                        <div class="admin-panel-heading">
+
+                            <div>
+
+                                <h3>Platform Activity</h3>
+
+                                <p>
+                                    Current website status
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="admin-activity-list">
+
+                            <div class="admin-activity-item">
+
+                                <div class="admin-activity-icon">
+
+                                    <i class="fas fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Pending Orders</span>
+
+                                    <strong>38</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="admin-activity-item">
+
+                                <div class="admin-activity-icon">
+
+                                    <i class="fas fa-store"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Active Vendors</span>
+
+                                    <strong>64</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="admin-activity-item">
+
+                                <div class="admin-activity-icon">
+
+                                    <i class="fas fa-rotate-left"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Return Requests</span>
+
+                                    <strong>17</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="admin-activity-item">
+
+                                <div class="admin-activity-icon">
+
+                                    <i class="fas fa-user-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Pending Vendors</span>
+
+                                    <strong>6</strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="admin-activity-item">
+
+                                <div class="admin-activity-icon">
+
+                                    <i class="fas fa-eye"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <span>Today's Visitors</span>
+
+                                    <strong>12,456</strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- RECENT ORDERS -->
+
+                <article class="admin-panel admin-recent-orders">
+
+                    <div class="admin-panel-heading">
+
+                        <div>
+
+                            <h3>Recent Orders</h3>
+
+                            <p>
+                                Latest orders placed on ShopEasy
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="admin-link-btn"
+                            onclick="openAdminSection('adminOrders')"
+                        >
+
+                            View All
+
+                            <i class="fas fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="admin-table-wrap">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Order ID</th>
+
+                                    <th>Customer</th>
+
+                                    <th>Product</th>
+
+                                    <th>Vendor</th>
+
+                                    <th>Amount</th>
+
+                                    <th>Status</th>
+
+                                    <th>Date</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>#SE20481</td>
+
+                                    <td>
+
+                                        <div class="admin-customer">
+
+                                            <span>MK</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Mohit Kumar
+                                                </strong>
+
+                                                <small>
+                                                    mohit@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Apple iPhone 15</td>
+
+                                    <td>Digital World</td>
+
+                                    <td>₹69,999</td>
+
+                                    <td>
+
+                                        <span class="admin-status pending">
+                                            Pending
+                                        </span>
+
+                                    </td>
+
+                                    <td>25 Jul 2026</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>#SE20480</td>
+
+                                    <td>
+
+                                        <div class="admin-customer">
+
+                                            <span>PS</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Priya Sharma
+                                                </strong>
+
+                                                <small>
+                                                    priya@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>HP Laptop</td>
+
+                                    <td>Tech Store</td>
+
+                                    <td>₹55,999</td>
+
+                                    <td>
+
+                                        <span class="admin-status shipped">
+                                            Shipped
+                                        </span>
+
+                                    </td>
+
+                                    <td>24 Jul 2026</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>#SE20479</td>
+
+                                    <td>
+
+                                        <div class="admin-customer">
+
+                                            <span>RS</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Rahul Singh
+                                                </strong>
+
+                                                <small>
+                                                    rahul@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Noise Smart Watch</td>
+
+                                    <td>Gadget Hub</td>
+
+                                    <td>₹2,499</td>
+
+                                    <td>
+
+                                        <span class="admin-status delivered">
+                                            Delivered
+                                        </span>
+
+                                    </td>
+
+                                    <td>23 Jul 2026</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>#SE20478</td>
+
+                                    <td>
+
+                                        <div class="admin-customer">
+
+                                            <span>AK</span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Ankit Kumar
+                                                </strong>
+
+                                                <small>
+                                                    ankit@example.com
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>Sports Shoes</td>
+
+                                    <td>Fashion Point</td>
+
+                                    <td>₹1,999</td>
+
+                                    <td>
+
+                                        <span class="admin-status cancelled">
+                                            Cancelled
+                                        </span>
+
+                                    </td>
+
+                                    <td>22 Jul 2026</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =====================================
+                 PRODUCTS
+            ====================================== -->
+
+            <section
+                id="adminProducts"
+                class="admin-section"
+            >
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>Product Management</span>
+
+                        <h2>All Products</h2>
+
+                        <p>
+                            Review, approve and manage products listed on the website.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="admin-primary-btn"
+                        onclick="showAdminProductMessage()"
+                    >
+
+                        <i class="fas fa-plus"></i>
+
+                        Add Product
+
+                    </button>
+
+                </div>
+
+                <div class="admin-tools">
+
+                    <div class="admin-search-box">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="adminProductSearch"
+                            placeholder="Search products..."
+                        >
+
+                    </div>
+
+                    <select
+                        id="adminProductCategory"
+                        aria-label="Product category filter"
+                    >
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="Mobiles">
+                            Mobiles
+                        </option>
+
+                        <option value="Laptop">
+                            Laptop
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Fashion">
+                            Fashion
+                        </option>
+
+                        <option value="Beauty">
+                            Beauty
+                        </option>
+
+                    </select>
+
+                    <select
+                        id="adminProductStatus"
+                        aria-label="Product status filter"
+                    >
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <article class="admin-panel">
+
+                    <div class="admin-table-wrap">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Product</th>
+
+                                    <th>Category</th>
+
+                                    <th>Vendor</th>
+
+                                    <th>Price</th>
+
+                                    <th>Stock</th>
+
+                                    <th>Status</th>
+
+                                    <th>Actions</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="adminProductsTable">
+
+                                <!-- Product data JavaScript se load hoga -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =====================================
+                 ORDERS
+            ====================================== -->
+
+            <section
+                id="adminOrders"
+                class="admin-section"
+            >
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>Order Management</span>
+
+                        <h2>All Orders</h2>
+
+                        <p>
+                            Review and update all customer orders.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="admin-secondary-btn"
+                        onclick="exportAdminOrders()"
+                    >
+
+                        <i class="fas fa-download"></i>
+
+                        Export Orders
+
+                    </button>
+
+                </div>
+
+                <div class="admin-filter-buttons">
+
+                    <button
+                        type="button"
+                        class="admin-order-filter active"
+                        data-status="all"
+                    >
+                        All Orders
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-order-filter"
+                        data-status="pending"
+                    >
+                        Pending
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-order-filter"
+                        data-status="shipped"
+                    >
+                        Shipped
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-order-filter"
+                        data-status="delivered"
+                    >
+                        Delivered
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-order-filter"
+                        data-status="cancelled"
+                    >
+                        Cancelled
+                    </button>
+
+                </div>
+
+                <article class="admin-panel">
+
+                    <div class="admin-table-wrap">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Order ID</th>
+
+                                    <th>Customer</th>
+
+                                    <th>Product</th>
+
+                                    <th>Vendor</th>
+
+                                    <th>Quantity</th>
+
+                                    <th>Total</th>
+
+                                    <th>Payment</th>
+
+                                    <th>Status</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="adminOrdersTable">
+
+                                <!-- Orders JavaScript se load honge -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =====================================
+                 CUSTOMERS
+            ====================================== -->
+
+            <section
+                id="adminUsers"
+                class="admin-section"
+            >
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>User Management</span>
+
+                        <h2>Registered Customers</h2>
+
+                        <p>
+                            View and manage all registered customer accounts.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="admin-tools">
+
+                    <div class="admin-search-box">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="adminUserSearch"
+                            placeholder="Search customers..."
+                        >
+
+                    </div>
+
+                    <select
+                        id="adminUserStatus"
+                        aria-label="Customer status filter"
+                    >
+
+                        <option value="all">
+                            All Customers
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="blocked">
+                            Blocked
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <article class="admin-panel">
+
+                    <div class="admin-table-wrap">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Customer</th>
+
+                                    <th>Email</th>
+
+                                    <th>Phone</th>
+
+                                    <th>Orders</th>
+
+                                    <th>Joined</th>
+
+                                    <th>Last Login</th>
+
+                                    <th>Logins</th>
+
+                                    <th>Device</th>
+
+                                    <th>Status</th>
+
+                                    <th>Actions</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="adminUsersTable">
+
+                                <!-- Customers JavaScript se load honge -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+                        <!-- =====================================
+                 VENDORS
+            ====================================== -->
+
+            <section
+                id="adminVendors"
+                class="admin-section"
+            >
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>Seller Management</span>
+
+                        <h2>Registered Vendors</h2>
+
+                        <p>
+                            Approve, block and manage all seller accounts.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="admin-primary-btn"
+                        onclick="showAdminVendorMessage()"
+                    >
+
+                        <i class="fas fa-user-plus"></i>
+
+                        Add Vendor
+
+                    </button>
+
+                </div>
+
+                <div class="admin-tools">
+
+                    <div class="admin-search-box">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="adminVendorSearch"
+                            placeholder="Search vendors..."
+                        >
+
+                    </div>
+
+                    <select
+                        id="adminVendorStatus"
+                        aria-label="Vendor status filter"
+                    >
+
+                        <option value="all">
+                            All Vendors
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="blocked">
+                            Blocked
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <article class="admin-panel">
+
+                    <div class="admin-table-wrap">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Vendor</th>
+
+                                    <th>Store</th>
+
+                                    <th>Category</th>
+
+                                    <th>Products</th>
+
+                                    <th>Revenue</th>
+
+                                    <th>Joined</th>
+
+                                    <th>Status</th>
+
+                                    <th>Actions</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="adminVendorsTable">
+
+                                <!-- Vendors JavaScript se load honge -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- =====================================
+                 CATEGORIES
+            ====================================== -->
+
+            <section
+                id="adminCategories"
+                class="admin-section"
+            >
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>Catalog Management</span>
+
+                        <h2>Product Categories</h2>
+
+                        <p>
+                            Add, edit and manage website product categories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="admin-category-layout">
+
+                    <article class="admin-panel admin-category-form-card">
+
+                        <div class="admin-panel-heading">
+
+                            <div>
+
+                                <h3>Add New Category</h3>
+
+                                <p>
+                                    Create a new product category.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <form id="adminCategoryForm">
+
+                            <div class="admin-form-group">
+
+                                <label for="adminCategoryName">
+
+                                    Category Name
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="adminCategoryName"
+                                    placeholder="Enter category name"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="admin-form-group">
+
+                                <label for="adminCategoryIcon">
+
+                                    Font Awesome Icon
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="adminCategoryIcon"
+                                    placeholder="Example: fa-mobile-screen"
+                                    required
+                                >
+
+                                <small>
+                                    Enter only the icon class name.
+                                </small>
+
+                            </div>
+
+                            <div class="admin-form-group">
+
+                                <label for="adminCategoryDescription">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="adminCategoryDescription"
+                                    rows="4"
+                                    placeholder="Write a short category description..."
+                                ></textarea>
+
+                            </div>
+
+                            <div class="admin-form-group">
+
+                                <label for="adminCategoryStatus">
+                                    Category Status
+                                </label>
+
+                                <select id="adminCategoryStatus">
+
+                                    <option value="active">
+                                        Active
+                                    </option>
+
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="admin-primary-btn admin-full-btn"
+                            >
+
+                                <i class="fas fa-plus"></i>
+
+                                Add Category
+
+                            </button>
+
+                        </form>
+
+                    </article>
+
+                    <article class="admin-panel">
+
+                        <div class="admin-panel-heading">
+
+                            <div>
+
+                                <h3>All Categories</h3>
+
+                                <p>
+                                    Current website categories.
+                                </p>
+
+                            </div>
+
+                            <span
+                                id="adminCategoryCount"
+                                class="admin-count-badge"
+                            >
+                                0 Categories
+                            </span>
+
+                        </div>
+
+                        <div
+                            id="adminCategoryList"
+                            class="admin-category-list"
+                        >
+
+                            <!-- Categories JavaScript se load hongi -->
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 SETTINGS
+            ====================================== -->
+
+            <section
+                id="adminSettings"
+                class="admin-section"
+            >
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>Website Configuration</span>
+
+                        <h2>Admin Settings</h2>
+
+                        <p>
+                            Manage general website and store preferences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <form
+                    id="adminSettingsForm"
+                    class="admin-settings-form"
+                >
+
+                    <div class="admin-settings-grid">
+
+                        <article class="admin-panel">
+
+                            <div class="admin-panel-heading">
+
+                                <div>
+
+                                    <h3>Website Information</h3>
+
+                                    <p>
+                                        Basic website name and contact details.
+                                    </p>
+
+                                </div>
+
+                                <i class="fas fa-globe"></i>
+
+                            </div>
+
+                            <div class="admin-form-grid">
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminWebsiteName">
+
+                                        Website Name
+
+                                        <span>*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="adminWebsiteName"
+                                        value="ShopEasy"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminWebsiteEmail">
+
+                                        Support Email
+
+                                        <span>*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="adminWebsiteEmail"
+                                        value="support@shopeasy.com"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminWebsitePhone">
+
+                                        Support Phone
+
+                                        <span>*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="adminWebsitePhone"
+                                        value="9876543210"
+                                        maxlength="10"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminWebsiteCurrency">
+                                        Website Currency
+                                    </label>
+
+                                    <select id="adminWebsiteCurrency">
+
+                                        <option value="INR">
+                                            Indian Rupee (₹)
+                                        </option>
+
+                                        <option value="USD">
+                                            US Dollar ($)
+                                        </option>
+
+                                        <option value="EUR">
+                                            Euro (€)
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="admin-form-group full-width">
+
+                                    <label for="adminWebsiteAddress">
+                                        Business Address
+                                    </label>
+
+                                    <textarea
+                                        id="adminWebsiteAddress"
+                                        rows="4"
+                                    >Hathras, Uttar Pradesh, India</textarea>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="admin-panel">
+
+                            <div class="admin-panel-heading">
+
+                                <div>
+
+                                    <h3>Order Settings</h3>
+
+                                    <p>
+                                        Configure order and delivery options.
+                                    </p>
+
+                                </div>
+
+                                <i class="fas fa-truck-fast"></i>
+
+                            </div>
+
+                            <div class="admin-form-grid">
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminMinimumOrder">
+                                        Minimum Order Amount
+                                    </label>
+
+                                    <div class="admin-input-icon">
+
+                                        <i class="fas fa-indian-rupee-sign"></i>
+
+                                        <input
+                                            type="number"
+                                            id="adminMinimumOrder"
+                                            value="199"
+                                            min="0"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminFreeDelivery">
+                                        Free Delivery Above
+                                    </label>
+
+                                    <div class="admin-input-icon">
+
+                                        <i class="fas fa-indian-rupee-sign"></i>
+
+                                        <input
+                                            type="number"
+                                            id="adminFreeDelivery"
+                                            value="499"
+                                            min="0"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminDeliveryCharge">
+                                        Standard Delivery Charge
+                                    </label>
+
+                                    <div class="admin-input-icon">
+
+                                        <i class="fas fa-indian-rupee-sign"></i>
+
+                                        <input
+                                            type="number"
+                                            id="adminDeliveryCharge"
+                                            value="49"
+                                            min="0"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminReturnDays">
+                                        Return Window
+                                    </label>
+
+                                    <select id="adminReturnDays">
+
+                                        <option value="7">
+                                            7 Days
+                                        </option>
+
+                                        <option value="10">
+                                            10 Days
+                                        </option>
+
+                                        <option value="15">
+                                            15 Days
+                                        </option>
+
+                                        <option value="30">
+                                            30 Days
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <div class="admin-toggle-list">
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Cash on Delivery
+                                        </strong>
+
+                                        <span>
+                                            Allow customers to pay on delivery.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminCodEnabled"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Guest Checkout
+                                        </strong>
+
+                                        <span>
+                                            Allow orders without creating an account.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminGuestCheckout"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                            </div>
+
+                        </article>
+
+                        <article class="admin-panel">
+
+                            <div class="admin-panel-heading">
+
+                                <div>
+
+                                    <h3>Vendor Settings</h3>
+
+                                    <p>
+                                        Manage seller registration and commission.
+                                    </p>
+
+                                </div>
+
+                                <i class="fas fa-store"></i>
+
+                            </div>
+
+                            <div class="admin-form-grid">
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminVendorCommission">
+                                        Platform Commission
+                                    </label>
+
+                                    <div class="admin-input-icon">
+
+                                        <i class="fas fa-percent"></i>
+
+                                        <input
+                                            type="number"
+                                            id="adminVendorCommission"
+                                            value="10"
+                                            min="0"
+                                            max="100"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                                <div class="admin-form-group">
+
+                                    <label for="adminMinimumPayout">
+                                        Minimum Payout
+                                    </label>
+
+                                    <div class="admin-input-icon">
+
+                                        <i class="fas fa-indian-rupee-sign"></i>
+
+                                        <input
+                                            type="number"
+                                            id="adminMinimumPayout"
+                                            value="1000"
+                                            min="0"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="admin-toggle-list">
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Vendor Registration
+                                        </strong>
+
+                                        <span>
+                                            Allow new sellers to register.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminVendorRegistration"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Manual Product Approval
+                                        </strong>
+
+                                        <span>
+                                            Review new vendor products before publishing.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminProductApproval"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                            </div>
+
+                        </article>
+
+                        <article class="admin-panel">
+
+                            <div class="admin-panel-heading">
+
+                                <div>
+
+                                    <h3>Notification Settings</h3>
+
+                                    <p>
+                                        Select admin notification preferences.
+                                    </p>
+
+                                </div>
+
+                                <i class="fas fa-bell"></i>
+
+                            </div>
+
+                            <div class="admin-toggle-list">
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            New Order Notifications
+                                        </strong>
+
+                                        <span>
+                                            Notify admin when a new order is placed.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminOrderNotifications"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            New Vendor Notifications
+                                        </strong>
+
+                                        <span>
+                                            Notify admin for new seller applications.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminVendorNotifications"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Low Stock Alerts
+                                        </strong>
+
+                                        <span>
+                                            Alert when product stock becomes low.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminStockNotifications"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                                <label class="admin-toggle-row">
+
+                                    <div>
+
+                                        <strong>
+                                            Return Request Alerts
+                                        </strong>
+
+                                        <span>
+                                            Notify admin for customer return requests.
+                                        </span>
+
+                                    </div>
+
+                                    <input
+                                        type="checkbox"
+                                        id="adminReturnNotifications"
+                                        checked
+                                    >
+
+                                    <span class="admin-toggle-slider"></span>
+
+                                </label>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                    <div class="admin-settings-actions">
+
+                        <button
+                            type="button"
+                            class="admin-secondary-btn"
+                            onclick="resetAdminSettings()"
+                        >
+
+                            <i class="fas fa-rotate-left"></i>
+
+                            Reset Settings
+
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="admin-primary-btn"
+                        >
+
+                            <i class="fas fa-floppy-disk"></i>
+
+                            Save Settings
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer><div class="footer-developer"><div class="footer-developer-icon"><i class="fas fa-code"></i></div><div><h3>About Developer</h3><p><strong>Mohit Kumar</strong> is a BCA student and web developer who created ShopEasy as a modern, responsive ecommerce project.</p><div class="footer-developer-links"><a href="mailto:mohitkumar6396105@gmail.com"><i class="fas fa-envelope"></i> mohitkumar6396105@gmail.com</a><a href="https://github.com/monir106" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/monir106</a><a href="about.html"><i class="fas fa-user-code"></i> View Full Profile</a></div></div></div>
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h2>ShopEasy</h2>
+
+                <p>
+                    India's modern shopping website.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="cart.html">Cart</a>
+                    </li>
+
+                    <li>
+                        <a href="wishlist.html">Wishlist</a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html">Profile</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3>Admin Links</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="admin.html">Dashboard</a>
+                    </li>
+
+                    <li>
+                        <a href="vendor.html">Vendor Panel</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Website Policy</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Support Centre</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3>Follow Us</h3>
+
+                <div class="social">
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                    >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                    >
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="X"
+                    >
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="YouTube"
+                    >
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            <p>
+                © 2026 ShopEasy. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="app.js"></script>
+
+    <script>
+
+        /* ==========================================================
+   ShopEasy Pro - Admin Dashboard JavaScript
+========================================================== */
+
+
+/* ==========================================
+   DEMO DATABASE
+========================================== */
+
+const adminProducts = JSON.parse(localStorage.getItem("vendorProducts")) || [
+
+    {
+        id:101,
+        name:"Boat Wireless Earbuds",
+        category:"Electronics",
+        vendor:"Digital World",
+        price:1499,
+        stock:24,
+        status:"active"
+    },
+
+    {
+        id:102,
+        name:"Noise Smart Watch",
+        category:"Electronics",
+        vendor:"Gadget Hub",
+        price:2499,
+        stock:8,
+        status:"active"
+    },
+
+    {
+        id:103,
+        name:"Gaming Mouse",
+        category:"Electronics",
+        vendor:"Tech Zone",
+        price:799,
+        stock:0,
+        status:"inactive"
+    },
+
+    {
+        id:104,
+        name:"Sports Shoes",
+        category:"Fashion",
+        vendor:"Fashion Point",
+        price:1999,
+        stock:15,
+        status:"pending"
+    }
+
+];
+
+
+
+const adminOrders = [
+
+    {
+        id:"#SE20481",
+        customer:"Mohit Kumar",
+        product:"Apple iPhone 15",
+        vendor:"Digital World",
+        quantity:1,
+        total:69999,
+        payment:"Paid",
+        status:"pending"
+    },
+
+    {
+        id:"#SE20480",
+        customer:"Priya Sharma",
+        product:"HP Laptop",
+        vendor:"Tech Store",
+        quantity:1,
+        total:55999,
+        payment:"Paid",
+        status:"shipped"
+    },
+
+    {
+        id:"#SE20479",
+        customer:"Rahul Singh",
+        product:"Noise Smart Watch",
+        vendor:"Gadget Hub",
+        quantity:1,
+        total:2499,
+        payment:"Paid",
+        status:"delivered"
+    },
+
+    {
+        id:"#SE20478",
+        customer:"Ankit Kumar",
+        product:"Sports Shoes",
+        vendor:"Fashion Point",
+        quantity:1,
+        total:1999,
+        payment:"Refunded",
+        status:"cancelled"
+    }
+
+];
+
+
+
+const adminUsers = [
+
+    {
+        name:"Mohit Kumar",
+        email:"mohit@example.com",
+        phone:"9876543210",
+        orders:18,
+        joined:"10 Jul 2026",
+        status:"active"
+    },
+
+    {
+        name:"Priya Sharma",
+        email:"priya@example.com",
+        phone:"9876500000",
+        orders:9,
+        joined:"17 Jul 2026",
+        status:"active"
+    },
+
+    {
+        name:"Rahul Singh",
+        email:"rahul@example.com",
+        phone:"9898989898",
+        orders:5,
+        joined:"20 Jul 2026",
+        status:"blocked"
+    }
+
+];
+
+
+
+const adminVendors=[
+
+    {
+        owner:"Rakesh Sharma",
+        store:"Digital World",
+        category:"Electronics",
+        products:48,
+        revenue:"₹4,82,000",
+        joined:"Jan 2026",
+        status:"active"
+    },
+
+    {
+        owner:"Neha Kapoor",
+        store:"Fashion Point",
+        category:"Fashion",
+        products:31,
+        revenue:"₹2,31,000",
+        joined:"Feb 2026",
+        status:"pending"
+    },
+
+    {
+        owner:"Amit Singh",
+        store:"Tech Store",
+        category:"Laptop",
+        products:18,
+        revenue:"₹6,92,000",
+        joined:"Mar 2026",
+        status:"blocked"
+    }
+
+];
+
+
+
+let adminCategories=JSON.parse(localStorage.getItem("adminCategories"))||[
+
+    {
+        name:"Mobiles",
+        icon:"fa-mobile-screen",
+        description:"Latest smartphones",
+        status:"active"
+    },
+
+    {
+        name:"Laptop",
+        icon:"fa-laptop",
+        description:"Laptops and notebooks",
+        status:"active"
+    },
+
+    {
+        name:"Electronics",
+        icon:"fa-plug",
+        description:"Electronic gadgets",
+        status:"active"
+    },
+
+    {
+        name:"Fashion",
+        icon:"fa-shirt",
+        description:"Clothing collection",
+        status:"active"
+    }
+
+];
+
+
+/* ==========================================
+   OPEN SECTION
+========================================== */
+
+function openAdminSection(id){
+
+    document
+    .querySelectorAll(".admin-section")
+    .forEach(section=>{
+
+        section.classList.remove("active");
+
+    });
+
+    document
+    .querySelectorAll(".admin-menu-btn")
+    .forEach(button=>{
+
+        button.classList.remove("active");
+
+    });
+
+    document
+    .getElementById(id)
+    .classList.add("active");
+
+    document
+    .querySelector(`[data-section="${id}"]`)
+    .classList.add("active");
+
+    window.scrollTo({
+
+        top:0,
+        behavior:"smooth"
+
+    });
+
+}
+
+
+
+/* ==========================================
+   MENU
+========================================== */
+
+document
+.querySelectorAll(".admin-menu-btn")
+.forEach(button=>{
+
+    button.onclick=()=>{
+
+        openAdminSection(button.dataset.section);
+
+    };
+
+});
+
+
+
+/* ==========================================
+   PRODUCTS TABLE
+========================================== */
+
+function renderAdminProducts(){
+
+    const table=document.getElementById("adminProductsTable");
+
+    if(!table) return;
+
+    table.innerHTML="";
+
+    adminProducts.forEach(product=>{
+
+        table.innerHTML+=`
+
+<tr>
+
+<td>
+
+<strong>${product.name}</strong>
+
+</td>
+
+<td>${product.category}</td>
+
+<td>${product.vendor}</td>
+
+<td>₹${product.price}</td>
+
+<td>${product.stock}</td>
+
+<td>
+
+<span class="admin-status ${product.status}">
+
+${product.status}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="table-btn edit"
+onclick="editAdminProduct(${product.id})">
+
+<i class="fas fa-pen"></i>
+
+</button>
+
+<button
+class="table-btn delete"
+onclick="deleteAdminProduct(${product.id})">
+
+<i class="fas fa-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+    });
+
+}
+
+
+
+/* ==========================================
+   DELETE PRODUCT
+========================================== */
+
+function deleteAdminProduct(id){
+
+    if(!confirm("Delete this product?")) return;
+
+    const index=adminProducts.findIndex(product=>product.id===id);
+
+    if(index>-1){
+
+        adminProducts.splice(index,1);
+
+        renderAdminProducts();
+
+        showNotification("Product deleted.");
+
+    }
+
+}
+
+
+
+/* ==========================================
+   EDIT PRODUCT
+========================================== */
+
+function editAdminProduct(id){
+
+    showNotification("Demo mode: Edit Product "+id);
+
+}
+
+
+
+/* ==========================================
+   PRODUCT SEARCH
+========================================== */
+
+const adminSearch=document.getElementById("adminProductSearch");
+
+if(adminSearch){
+
+adminSearch.addEventListener("input",()=>{
+
+const keyword=adminSearch.value.toLowerCase();
+
+const rows=document.querySelectorAll("#adminProductsTable tr");
+
+rows.forEach(row=>{
+
+row.style.display=row.innerText
+.toLowerCase()
+.includes(keyword)
+
+?
+
+"table-row"
+
+:
+
+"none";
+
+});
+
+});
+
+}
+
+/* ==========================================
+   PRODUCT FILTERS
+========================================== */
+
+const adminProductCategory = document.getElementById(
+    "adminProductCategory"
+);
+
+const adminProductStatus = document.getElementById(
+    "adminProductStatus"
+);
+
+function filterAdminProducts() {
+
+    const searchValue = document
+        .getElementById("adminProductSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const categoryValue =
+        adminProductCategory.value;
+
+    const statusValue =
+        adminProductStatus.value;
+
+    const filteredProducts =
+        adminProducts.filter(product => {
+
+            const matchesSearch =
+                product.name
+                    .toLowerCase()
+                    .includes(searchValue) ||
+                product.vendor
+                    .toLowerCase()
+                    .includes(searchValue);
+
+            const matchesCategory =
+                categoryValue === "all" ||
+                product.category === categoryValue;
+
+            const matchesStatus =
+                statusValue === "all" ||
+                product.status === statusValue;
+
+            return (
+                matchesSearch &&
+                matchesCategory &&
+                matchesStatus
+            );
+
+        });
+
+    renderFilteredAdminProducts(
+        filteredProducts
+    );
+
+}
+
+
+function renderFilteredAdminProducts(products) {
+
+    const table = document.getElementById(
+        "adminProductsTable"
+    );
+
+    table.innerHTML = "";
+
+    if (products.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty-box">
+
+                        <i class="fas fa-box-open"></i>
+
+                        <h2>No products found</h2>
+
+                        <p>
+                            Search ya filter change karke dekhein.
+                        </p>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+    products.forEach(product => {
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td>
+                    <strong>${product.name}</strong>
+                </td>
+
+                <td>${product.category}</td>
+
+                <td>${product.vendor}</td>
+
+                <td>${formatPrice(product.price)}</td>
+
+                <td>${product.stock}</td>
+
+                <td>
+
+                    <span class="admin-status ${product.status}">
+                        ${capitalizeAdminText(product.status)}
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        type="button"
+                        class="table-btn edit"
+                        onclick="editAdminProduct(${product.id})"
+                        title="Edit product"
+                    >
+
+                        <i class="fas fa-pen"></i>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="table-btn delete"
+                        onclick="deleteAdminProduct(${product.id})"
+                        title="Delete product"
+                    >
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+}
+
+
+if (adminProductCategory) {
+
+    adminProductCategory.addEventListener(
+        "change",
+        filterAdminProducts
+    );
+
+}
+
+
+if (adminProductStatus) {
+
+    adminProductStatus.addEventListener(
+        "change",
+        filterAdminProducts
+    );
+
+}
+
+
+/* ==========================================
+   ORDERS TABLE
+========================================== */
+
+function renderAdminOrders(
+    orders = adminOrders
+) {
+
+    const table = document.getElementById(
+        "adminOrdersTable"
+    );
+
+    if (!table) {
+        return;
+    }
+
+    table.innerHTML = "";
+
+    if (orders.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="9">
+
+                    <div class="empty-box">
+
+                        <i class="fas fa-bag-shopping"></i>
+
+                        <h2>No orders found</h2>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+    orders.forEach(order => {
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td>${order.id}</td>
+
+                <td>${order.customer}</td>
+
+                <td>${order.product}</td>
+
+                <td>${order.vendor}</td>
+
+                <td>${order.quantity}</td>
+
+                <td>${formatPrice(order.total)}</td>
+
+                <td>${order.payment}</td>
+
+                <td>
+
+                    <span class="admin-status ${order.status}">
+
+                        ${capitalizeAdminText(order.status)}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <select
+                        class="admin-status-select"
+                        onchange="updateAdminOrderStatus(
+                            '${order.id}',
+                            this.value
+                        )"
+                    >
+
+                        <option
+                            value="pending"
+                            ${
+                                order.status === "pending"
+                                    ? "selected"
+                                    : ""
+                            }
+                        >
+                            Pending
+                        </option>
+
+                        <option
+                            value="shipped"
+                            ${
+                                order.status === "shipped"
+                                    ? "selected"
+                                    : ""
+                            }
+                        >
+                            Shipped
+                        </option>
+
+                        <option
+                            value="delivered"
+                            ${
+                                order.status === "delivered"
+                                    ? "selected"
+                                    : ""
+                            }
+                        >
+                            Delivered
+                        </option>
+
+                        <option
+                            value="cancelled"
+                            ${
+                                order.status === "cancelled"
+                                    ? "selected"
+                                    : ""
+                            }
+                        >
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+}
+
+
+function updateAdminOrderStatus(
+    orderId,
+    newStatus
+) {
+
+    const order = adminOrders.find(
+        item => item.id === orderId
+    );
+
+    if (!order) {
+        return;
+    }
+
+    order.status = newStatus;
+
+    renderAdminOrders();
+
+    showNotification(
+        "Order status successfully update ho gaya."
+    );
+
+}
+
+
+document
+    .querySelectorAll(".admin-order-filter")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(
+                        ".admin-order-filter"
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+                button.classList.add(
+                    "active"
+                );
+
+                const status =
+                    button.dataset.status;
+
+                if (status === "all") {
+
+                    renderAdminOrders();
+
+                    return;
+
+                }
+
+                const filteredOrders =
+                    adminOrders.filter(
+                        order =>
+                            order.status === status
+                    );
+
+                renderAdminOrders(
+                    filteredOrders
+                );
+
+            }
+        );
+
+    });
+
+
+/* ==========================================
+   USERS TABLE
+========================================== */
+
+function renderAdminUsers(
+    users = adminUsers
+) {
+
+    const table = document.getElementById(
+        "adminUsersTable"
+    );
+
+    if (!table) {
+        return;
+    }
+
+    table.innerHTML = "";
+
+    if (users.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty-box">
+
+                        <i class="fas fa-users"></i>
+
+                        <h2>No customers found</h2>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+    users.forEach((user, index) => {
+
+        const initials = getAdminInitials(
+            user.name
+        );
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td>
+
+                    <div class="admin-customer">
+
+                        <span>${initials}</span>
+
+                        <div>
+
+                            <strong>${user.name}</strong>
+
+                            <small>
+                                Customer ID: #CU${1001 + index}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+                <td>${user.email}</td>
+
+                <td>${user.phone}</td>
+
+                <td>${user.orders}</td>
+
+                <td>${user.joined}</td>
+
+                <td>
+
+                    <span class="admin-status ${user.status}">
+
+                        ${capitalizeAdminText(user.status)}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        type="button"
+                        class="table-btn edit"
+                        onclick="toggleAdminUserStatus(${index})"
+                        title="Change status"
+                    >
+
+                        <i class="fas fa-user-lock"></i>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="table-btn delete"
+                        onclick="deleteAdminUser(${index})"
+                        title="Delete customer"
+                    >
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+}
+
+
+function toggleAdminUserStatus(index) {
+
+    const user = adminUsers[index];
+
+    if (!user) {
+        return;
+    }
+
+    user.status =
+        user.status === "active"
+            ? "blocked"
+            : "active";
+
+    filterAdminUsers();
+
+    showNotification(
+        `Customer ${user.status} ho gaya.`
+    );
+
+}
+
+
+function deleteAdminUser(index) {
+
+    const confirmed = confirm(
+        "Kya aap is customer account ko delete karna chahte hain?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    adminUsers.splice(index, 1);
+
+    filterAdminUsers();
+
+    showNotification(
+        "Customer account delete ho gaya."
+    );
+
+}
+
+
+function filterAdminUsers() {
+
+    const searchValue = document
+        .getElementById("adminUserSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const statusValue = document
+        .getElementById("adminUserStatus")
+        .value;
+
+    const filteredUsers =
+        adminUsers.filter(user => {
+
+            const matchesSearch =
+                user.name
+                    .toLowerCase()
+                    .includes(searchValue) ||
+                user.email
+                    .toLowerCase()
+                    .includes(searchValue) ||
+                user.phone.includes(
+                    searchValue
+                );
+
+            const matchesStatus =
+                statusValue === "all" ||
+                user.status === statusValue;
+
+            return (
+                matchesSearch &&
+                matchesStatus
+            );
+
+        });
+
+    renderAdminUsers(
+        filteredUsers
+    );
+
+}
+
+
+const adminUserSearch =
+    document.getElementById(
+        "adminUserSearch"
+    );
+
+const adminUserStatus =
+    document.getElementById(
+        "adminUserStatus"
+    );
+
+
+if (adminUserSearch) {
+
+    adminUserSearch.addEventListener(
+        "input",
+        filterAdminUsers
+    );
+
+}
+
+
+if (adminUserStatus) {
+
+    adminUserStatus.addEventListener(
+        "change",
+        filterAdminUsers
+    );
+
+}
+
+
+/* ==========================================
+   VENDORS TABLE
+========================================== */
+
+function renderAdminVendors(
+    vendors = adminVendors
+) {
+
+    const table = document.getElementById(
+        "adminVendorsTable"
+    );
+
+    if (!table) {
+        return;
+    }
+
+    table.innerHTML = "";
+
+    if (vendors.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="8">
+
+                    <div class="empty-box">
+
+                        <i class="fas fa-store"></i>
+
+                        <h2>No vendors found</h2>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+    vendors.forEach((vendor, index) => {
+
+        const initials = getAdminInitials(
+            vendor.owner
+        );
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td>
+
+                    <div class="admin-customer">
+
+                        <span>${initials}</span>
+
+                        <div>
+
+                            <strong>${vendor.owner}</strong>
+
+                            <small>
+                                Vendor ID: #VN${201 + index}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+                <td>${vendor.store}</td>
+
+                <td>${vendor.category}</td>
+
+                <td>${vendor.products}</td>
+
+                <td>${vendor.revenue}</td>
+
+                <td>${vendor.joined}</td>
+
+                <td>
+
+                    <span class="admin-status ${vendor.status}">
+
+                        ${capitalizeAdminText(vendor.status)}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        type="button"
+                        class="table-btn edit"
+                        onclick="changeAdminVendorStatus(${index})"
+                        title="Change status"
+                    >
+
+                        <i class="fas fa-user-check"></i>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="table-btn delete"
+                        onclick="deleteAdminVendor(${index})"
+                        title="Delete vendor"
+                    >
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+}
+
+
+function changeAdminVendorStatus(index) {
+
+    const vendor = adminVendors[index];
+
+    if (!vendor) {
+        return;
+    }
+
+    if (vendor.status === "pending") {
+
+        vendor.status = "active";
+
+    } else if (
+        vendor.status === "active"
+    ) {
+
+        vendor.status = "blocked";
+
+    } else {
+
+        vendor.status = "active";
+
+    }
+
+    filterAdminVendors();
+
+    showNotification(
+        `Vendor status ${vendor.status} ho gaya.`
+    );
+
+}
+
+
+function deleteAdminVendor(index) {
+
+    const confirmed = confirm(
+        "Kya aap is vendor account ko delete karna chahte hain?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    adminVendors.splice(index, 1);
+
+    filterAdminVendors();
+
+    showNotification(
+        "Vendor account delete ho gaya."
+    );
+
+}
+
+
+function filterAdminVendors() {
+
+    const searchValue = document
+        .getElementById("adminVendorSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const statusValue = document
+        .getElementById("adminVendorStatus")
+        .value;
+
+    const filteredVendors =
+        adminVendors.filter(vendor => {
+
+            const matchesSearch =
+                vendor.owner
+                    .toLowerCase()
+                    .includes(searchValue) ||
+                vendor.store
+                    .toLowerCase()
+                    .includes(searchValue) ||
+                vendor.category
+                    .toLowerCase()
+                    .includes(searchValue);
+
+            const matchesStatus =
+                statusValue === "all" ||
+                vendor.status === statusValue;
+
+            return (
+                matchesSearch &&
+                matchesStatus
+            );
+
+        });
+
+    renderAdminVendors(
+        filteredVendors
+    );
+
+}
+
+
+const adminVendorSearch =
+    document.getElementById(
+        "adminVendorSearch"
+    );
+
+const adminVendorStatus =
+    document.getElementById(
+        "adminVendorStatus"
+    );
+
+
+if (adminVendorSearch) {
+
+    adminVendorSearch.addEventListener(
+        "input",
+        filterAdminVendors
+    );
+
+}
+
+
+if (adminVendorStatus) {
+
+    adminVendorStatus.addEventListener(
+        "change",
+        filterAdminVendors
+    );
+
+}
+
+
+/* ==========================================
+   CATEGORIES
+========================================== */
+
+function saveAdminCategories() {
+
+    localStorage.setItem(
+        "adminCategories",
+        JSON.stringify(
+            adminCategories
+        )
+    );
+
+}
+
+
+function renderAdminCategories() {
+
+    const categoryList =
+        document.getElementById(
+            "adminCategoryList"
+        );
+
+    const categoryCount =
+        document.getElementById(
+            "adminCategoryCount"
+        );
+
+    if (!categoryList) {
+        return;
+    }
+
+    categoryList.innerHTML = "";
+
+    categoryCount.textContent =
+        `${adminCategories.length} Categories`;
+
+    if (adminCategories.length === 0) {
+
+        categoryList.innerHTML = `
+
+            <div class="empty-box">
+
+                <i class="fas fa-layer-group"></i>
+
+                <h2>No categories available</h2>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    adminCategories.forEach(
+        (category, index) => {
+
+            categoryList.innerHTML += `
+
+                <div class="admin-category-item">
+
+                    <div class="admin-category-icon">
+
+                        <i class="fas ${category.icon}"></i>
+
+                    </div>
+
+                    <div class="admin-category-info">
+
+                        <h3>${category.name}</h3>
+
+                        <p>
+                            ${category.description || "No description"}
+                        </p>
+
+                        <span class="admin-status ${category.status}">
+
+                            ${capitalizeAdminText(category.status)}
+
+                        </span>
+
+                    </div>
+
+                    <div class="admin-category-actions">
+
+                        <button
+                            type="button"
+                            class="table-btn edit"
+                            onclick="toggleAdminCategoryStatus(${index})"
+                            title="Change status"
+                        >
+
+                            <i class="fas fa-power-off"></i>
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="table-btn delete"
+                            onclick="deleteAdminCategory(${index})"
+                            title="Delete category"
+                        >
+
+                            <i class="fas fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+const adminCategoryForm =
+    document.getElementById(
+        "adminCategoryForm"
+    );
+
+
+if (adminCategoryForm) {
+
+    adminCategoryForm.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+            const name = document
+                .getElementById(
+                    "adminCategoryName"
+                )
+                .value
+                .trim();
+
+            const icon = document
+                .getElementById(
+                    "adminCategoryIcon"
+                )
+                .value
+                .trim();
+
+            const description = document
+                .getElementById(
+                    "adminCategoryDescription"
+                )
+                .value
+                .trim();
+
+            const status = document
+                .getElementById(
+                    "adminCategoryStatus"
+                )
+                .value;
+
+            const alreadyExists =
+                adminCategories.some(
+                    category =>
+                        category.name
+                            .toLowerCase() ===
+                        name.toLowerCase()
+                );
+
+            if (alreadyExists) {
+
+                showNotification(
+                    "Ye category pehle se maujood hai."
+                );
+
+                return;
+
+            }
+
+            adminCategories.push({
+
+                name,
+                icon,
+                description,
+                status
+
+            });
+
+            saveAdminCategories();
+
+            renderAdminCategories();
+
+            adminCategoryForm.reset();
+
+            showNotification(
+                "New category successfully add ho gayi."
+            );
+
+        }
+    );
+
+}
+
+
+function toggleAdminCategoryStatus(index) {
+
+    const category =
+        adminCategories[index];
+
+    if (!category) {
+        return;
+    }
+
+    category.status =
+        category.status === "active"
+            ? "inactive"
+            : "active";
+
+    saveAdminCategories();
+
+    renderAdminCategories();
+
+    showNotification(
+        "Category status update ho gaya."
+    );
+
+}
+
+
+function deleteAdminCategory(index) {
+
+    const confirmed = confirm(
+        "Kya aap is category ko delete karna chahte hain?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    adminCategories.splice(index, 1);
+
+    saveAdminCategories();
+
+    renderAdminCategories();
+
+    showNotification(
+        "Category delete ho gayi."
+    );
+
+}
+
+
+/* ==========================================
+   SETTINGS
+========================================== */
+
+function getAdminSettingsData() {
+
+    return {
+
+        websiteName: document
+            .getElementById(
+                "adminWebsiteName"
+            )
+            .value
+            .trim(),
+
+        websiteEmail: document
+            .getElementById(
+                "adminWebsiteEmail"
+            )
+            .value
+            .trim(),
+
+        websitePhone: document
+            .getElementById(
+                "adminWebsitePhone"
+            )
+            .value
+            .trim(),
+
+        websiteCurrency: document
+            .getElementById(
+                "adminWebsiteCurrency"
+            )
+            .value,
+
+        websiteAddress: document
+            .getElementById(
+                "adminWebsiteAddress"
+            )
+            .value
+            .trim(),
+
+        minimumOrder: Number(
+            document.getElementById(
+                "adminMinimumOrder"
+            ).value
+        ),
+
+        freeDelivery: Number(
+            document.getElementById(
+                "adminFreeDelivery"
+            ).value
+        ),
+
+        deliveryCharge: Number(
+            document.getElementById(
+                "adminDeliveryCharge"
+            ).value
+        ),
+
+        returnDays: document
+            .getElementById(
+                "adminReturnDays"
+            )
+            .value,
+
+        codEnabled: document
+            .getElementById(
+                "adminCodEnabled"
+            )
+            .checked,
+
+        guestCheckout: document
+            .getElementById(
+                "adminGuestCheckout"
+            )
+            .checked,
+
+        vendorCommission: Number(
+            document.getElementById(
+                "adminVendorCommission"
+            ).value
+        ),
+
+        minimumPayout: Number(
+            document.getElementById(
+                "adminMinimumPayout"
+            ).value
+        ),
+
+        vendorRegistration: document
+            .getElementById(
+                "adminVendorRegistration"
+            )
+            .checked,
+
+        productApproval: document
+            .getElementById(
+                "adminProductApproval"
+            )
+            .checked,
+
+        orderNotifications: document
+            .getElementById(
+                "adminOrderNotifications"
+            )
+            .checked,
+
+        vendorNotifications: document
+            .getElementById(
+                "adminVendorNotifications"
+            )
+            .checked,
+
+        stockNotifications: document
+            .getElementById(
+                "adminStockNotifications"
+            )
+            .checked,
+
+        returnNotifications: document
+            .getElementById(
+                "adminReturnNotifications"
+            )
+            .checked
+
+    };
+
+}
+
+
+const adminSettingsForm =
+    document.getElementById(
+        "adminSettingsForm"
+    );
+
+
+if (adminSettingsForm) {
+
+    adminSettingsForm.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+            const settings =
+                getAdminSettingsData();
+
+            localStorage.setItem(
+                "adminSettings",
+                JSON.stringify(settings)
+            );
+
+            showNotification(
+                "Admin settings successfully save ho gayi."
+            );
+
+        }
+    );
+
+}
+
+
+function loadAdminSettings() {
+
+    const settings = JSON.parse(
+        localStorage.getItem(
+            "adminSettings"
+        )
+    );
+
+    if (!settings) {
+        return;
+    }
+
+    document.getElementById(
+        "adminWebsiteName"
+    ).value =
+        settings.websiteName;
+
+    document.getElementById(
+        "adminWebsiteEmail"
+    ).value =
+        settings.websiteEmail;
+
+    document.getElementById(
+        "adminWebsitePhone"
+    ).value =
+        settings.websitePhone;
+
+    document.getElementById(
+        "adminWebsiteCurrency"
+    ).value =
+        settings.websiteCurrency;
+
+    document.getElementById(
+        "adminWebsiteAddress"
+    ).value =
+        settings.websiteAddress;
+
+    document.getElementById(
+        "adminMinimumOrder"
+    ).value =
+        settings.minimumOrder;
+
+    document.getElementById(
+        "adminFreeDelivery"
+    ).value =
+        settings.freeDelivery;
+
+    document.getElementById(
+        "adminDeliveryCharge"
+    ).value =
+        settings.deliveryCharge;
+
+    document.getElementById(
+        "adminReturnDays"
+    ).value =
+        settings.returnDays;
+
+    document.getElementById(
+        "adminCodEnabled"
+    ).checked =
+        settings.codEnabled;
+
+    document.getElementById(
+        "adminGuestCheckout"
+    ).checked =
+        settings.guestCheckout;
+
+    document.getElementById(
+        "adminVendorCommission"
+    ).value =
+        settings.vendorCommission;
+
+    document.getElementById(
+        "adminMinimumPayout"
+    ).value =
+        settings.minimumPayout;
+
+    document.getElementById(
+        "adminVendorRegistration"
+    ).checked =
+        settings.vendorRegistration;
+
+    document.getElementById(
+        "adminProductApproval"
+    ).checked =
+        settings.productApproval;
+
+    document.getElementById(
+        "adminOrderNotifications"
+    ).checked =
+        settings.orderNotifications;
+
+    document.getElementById(
+        "adminVendorNotifications"
+    ).checked =
+        settings.vendorNotifications;
+
+    document.getElementById(
+        "adminStockNotifications"
+    ).checked =
+        settings.stockNotifications;
+
+    document.getElementById(
+        "adminReturnNotifications"
+    ).checked =
+        settings.returnNotifications;
+
+}
+
+
+function resetAdminSettings() {
+
+    const confirmed = confirm(
+        "Kya aap admin settings reset karna chahte hain?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem(
+        "adminSettings"
+    );
+
+    adminSettingsForm.reset();
+
+    document.getElementById(
+        "adminWebsiteName"
+    ).value = "ShopEasy";
+
+    document.getElementById(
+        "adminWebsiteEmail"
+    ).value =
+        "support@shopeasy.com";
+
+    document.getElementById(
+        "adminWebsitePhone"
+    ).value =
+        "9876543210";
+
+    document.getElementById(
+        "adminWebsiteAddress"
+    ).value =
+        "Hathras, Uttar Pradesh, India";
+
+    document.getElementById(
+        "adminMinimumOrder"
+    ).value = 199;
+
+    document.getElementById(
+        "adminFreeDelivery"
+    ).value = 499;
+
+    document.getElementById(
+        "adminDeliveryCharge"
+    ).value = 49;
+
+    document.getElementById(
+        "adminVendorCommission"
+    ).value = 10;
+
+    document.getElementById(
+        "adminMinimumPayout"
+    ).value = 1000;
+
+    showNotification(
+        "Admin settings reset ho gayi."
+    );
+
+}
+
+
+/* ==========================================
+   EXPORT ORDERS
+========================================== */
+
+function exportAdminOrders() {
+
+    const orderRows =
+        adminOrders.map(order => {
+
+            return [
+
+                order.id,
+                order.customer,
+                order.product,
+                order.vendor,
+                order.quantity,
+                order.total,
+                order.payment,
+                order.status
+
+            ].join(",");
+
+        });
+
+    const csvContent = [
+
+        "Order ID,Customer,Product,Vendor,Quantity,Total,Payment,Status",
+        ...orderRows
+
+    ].join("\n");
+
+    const fileBlob = new Blob(
+        [csvContent],
+        {
+            type: "text/csv;charset=utf-8;"
+        }
+    );
+
+    const downloadUrl =
+        URL.createObjectURL(
+            fileBlob
+        );
+
+    const downloadLink =
+        document.createElement("a");
+
+    downloadLink.href =
+        downloadUrl;
+
+    downloadLink.download =
+        "ShopEasy-Admin-Orders.csv";
+
+    document.body.appendChild(
+        downloadLink
+    );
+
+    downloadLink.click();
+
+    downloadLink.remove();
+
+    URL.revokeObjectURL(
+        downloadUrl
+    );
+
+    showNotification(
+        "Orders CSV file download ho gayi."
+    );
+
+}
+
+
+/* ==========================================
+   DEMO MESSAGES
+========================================== */
+
+function showAdminNotifications() {
+
+    showNotification(
+        "Aapke paas 5 new admin notifications hain."
+    );
+
+}
+
+
+function showAdminProductMessage() {
+
+    showNotification(
+        "Admin product creation demo mode me available hai."
+    );
+
+}
+
+
+function showAdminVendorMessage() {
+
+    showNotification(
+        "Vendor creation demo mode me available hai."
+    );
+
+}
+
+
+/* ==========================================
+   HELPER FUNCTIONS
+========================================== */
+
+function capitalizeAdminText(text) {
+
+    return text
+        .charAt(0)
+        .toUpperCase() +
+        text.slice(1);
+
+}
+
+
+function getAdminInitials(name) {
+
+    return name
+        .split(" ")
+        .map(word => word.charAt(0))
+        .join("")
+        .slice(0, 2)
+        .toUpperCase();
+
+}
+
+
+/* ==========================================
+   ADMIN INITIALIZATION
+========================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderAdminProducts();
+
+        renderAdminOrders();
+
+        renderAdminUsers();
+
+        renderAdminVendors();
+
+        renderAdminCategories();
+
+        loadAdminSettings();
+
+    }
+);
+
+    </script>
+
+    <script src="admin-sync.js"></script>
+</body>
+
+</html>

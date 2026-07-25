@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | ShopEasy Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="logo"><a href="index.html"><h2>ShopEasy</h2></a></div><div class="search"><input type="text" placeholder="Search for products..."><button aria-label="Search"><i class="fas fa-search"></i></button></div><div class="right"><button id="themeBtn" aria-label="Change theme"><i class="fas fa-moon"></i></button><a href="login.html"><i class="fas fa-user"></i><span>Login</span></a><a href="wishlist.html"><i class="fas fa-heart"></i><span>Wishlist</span><b class="count" id="wishlistCount">0</b></a><a href="orders.html"><i class="fas fa-box-open"></i><span>Orders</span></a><a href="cart.html" class="cart"><i class="fas fa-shopping-cart"></i><span>Cart</span><b class="count" id="cartCount">0</b></a></div></header>
+<nav><ul><li><a href="index.html">Home</a></li><li><a href="index.html#categories">Categories</a></li><li><a href="index.html#featured">Featured</a></li><li><a href="index.html#offers">Offers</a></li><li><a href="vendor.html">Vendor</a></li><li><a href="admin.html">Admin</a></li></ul></nav>
+<main class="se-auth-page">
+  <section class="se-auth-shell se-register-shell">
+    <div class="se-auth-visual">
+      <div class="se-orb se-orb-one"></div><div class="se-orb se-orb-two"></div>
+      <div class="se-visual-content">
+        <span class="se-eyebrow"><i class="fas fa-rocket"></i> Join ShopEasy Pro</span>
+        <div class="se-visual-icon"><i class="fas fa-user-plus"></i></div>
+        <h1>Create an account made for smarter shopping.</h1>
+        <p>Save products, track your cart and enjoy a personalised experience across ShopEasy.</p>
+        <div class="se-feature-list"><div><i class="fas fa-heart"></i><span><strong>Personalised Wishlist</strong><small>Keep every favourite in one place.</small></span></div><div><i class="fas fa-box"></i><span><strong>Easy Order Tracking</strong><small>View your shopping activity anytime.</small></span></div><div><i class="fas fa-gift"></i><span><strong>Member Benefits</strong><small>Unlock better offers and experiences.</small></span></div></div>
+      </div>
+    </div>
+    <div class="se-auth-form-panel">
+      <div class="se-auth-card se-register-card">
+        <div class="se-auth-heading"><div class="se-mini-icon"><i class="fas fa-user-plus"></i></div><span>Create Account</span><h2>Start shopping with us</h2><p>Fill in your details to create your ShopEasy account.</p></div>
+        <form id="registerForm" class="se-auth-form">
+          <div class="se-two-fields">
+            <div class="se-field"><label for="registerName">Full Name</label><div class="se-input-wrap"><i class="fas fa-user"></i><input type="text" id="registerName" placeholder="Enter full name" autocomplete="name" required></div></div>
+            <div class="se-field"><label for="registerEmail">Email Address</label><div class="se-input-wrap"><i class="fas fa-envelope"></i><input type="email" id="registerEmail" placeholder="Enter email address" autocomplete="email" required></div></div>
+          </div>
+          <div class="se-two-fields">
+            <div class="se-field"><label for="registerPassword">Password</label><div class="se-input-wrap"><i class="fas fa-lock"></i><input type="password" id="registerPassword" placeholder="Create password" autocomplete="new-password" required><button type="button" class="se-password-toggle" onclick="togglePassword('registerPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+            <div class="se-field"><label for="confirmPassword">Confirm Password</label><div class="se-input-wrap"><i class="fas fa-shield-halved"></i><input type="password" id="confirmPassword" placeholder="Confirm password" autocomplete="new-password" required><button type="button" class="se-password-toggle" onclick="togglePassword('confirmPassword',this)"><i class="fas fa-eye"></i></button></div></div>
+          </div>
+          <label class="se-terms"><input type="checkbox" required><span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</span></label>
+          <button class="se-submit-btn" type="submit"><span>Create Account</span><i class="fas fa-arrow-right"></i></button>
+        </form>
+        <div class="se-divider"><span>OR CONTINUE WITH</span></div>
+        <div class="se-social-grid"><button type="button"><i class="fab fa-google"></i>Google</button><button type="button"><i class="fab fa-facebook-f"></i>Facebook</button></div>
+        <p class="se-auth-switch">Already have an account? <a href="login.html">Login Now</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="footer-developer"><div class="footer-developer-icon"><i class="fas fa-code"></i></div><div><h3>About Developer</h3><p><strong>Mohit Kumar</strong> is a BCA student and web developer who created ShopEasy as a modern, responsive ecommerce project.</p><div class="footer-developer-links"><a href="mailto:mohitkumar6396105@gmail.com"><i class="fas fa-envelope"></i> mohitkumar6396105@gmail.com</a><a href="https://github.com/monir106" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/monir106</a><a href="about.html"><i class="fas fa-user-code"></i> View Full Profile</a></div></div></div><div class="footer-grid"><div><h2>ShopEasy</h2><p>India's modern shopping website.</p></div><div><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="cart.html">Cart</a></li><li><a href="wishlist.html">Wishlist</a></li><li><a href="profile.html">Profile</a></li></ul></div><div><h3>Customer Care</h3><ul><li><a href="#">Help Centre</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li><li><a href="#">Return Policy</a></li></ul></div><div><h3>Follow Us</h3><div class="social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div></div><div class="copyright"><p>© 2026 ShopEasy. All Rights Reserved. | Designed &amp; Developed with ❤️ by Mohit Kumar</p></div></footer>
+<script src="app.js"></script>
+</body></html>

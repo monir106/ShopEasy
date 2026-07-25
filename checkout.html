@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout | ShopEasy Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html"><h2>ShopEasy</h2></a></div>
+  <div class="checkout-head-note"><i class="fas fa-lock"></i> Secure Checkout</div>
+  <div class="right">
+    <button id="themeBtn" type="button" aria-label="Change theme"><i class="fas fa-moon"></i></button>
+    <a href="orders.html"><i class="fas fa-box-open"></i><span>Orders</span></a>
+    <a href="cart.html"><i class="fas fa-cart-shopping"></i><span>Cart</span><b class="count" id="cartCount">0</b></a>
+  </div>
+</header>
+<main class="checkout-page">
+  <div class="breadcrumb"><a href="cart.html">Cart</a><i class="fas fa-chevron-right"></i><span>Checkout</span></div>
+  <div class="checkout-layout">
+    <form class="checkout-form" onsubmit="placeOrder(event)">
+      <section class="checkout-card">
+        <div class="checkout-title"><span>1</span><div><h2>Delivery Address</h2><p>Enter details where you want your order delivered.</p></div></div>
+        <div class="form-grid">
+          <label>Full Name<input required name="name" autocomplete="name" placeholder="Enter full name"></label>
+          <label>Mobile Number<input required name="phone" inputmode="numeric" pattern="[0-9]{10}" placeholder="10-digit number"></label>
+          <label class="full-field">Address<textarea required name="address" rows="3" placeholder="House number, street and area"></textarea></label>
+          <label>City<input required name="city" placeholder="City"></label>
+          <label>State<select required name="state"><option value="">Select state</option><option>Uttar Pradesh</option><option>Delhi</option><option>Rajasthan</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Other</option></select></label>
+          <label>PIN Code<input required name="pin" inputmode="numeric" pattern="[0-9]{6}" placeholder="6-digit PIN"></label>
+          <label>Landmark<input name="landmark" placeholder="Optional landmark"></label>
+        </div>
+      </section>
+      <section class="checkout-card">
+        <div class="checkout-title"><span>2</span><div><h2>Payment Method</h2><p>Demo payment options—no real payment will be charged.</p></div></div>
+        <div class="payment-options">
+          <label><input type="radio" name="payment" value="cod" checked><span><i class="fas fa-money-bill-wave"></i><b>Cash on Delivery</b><small>Pay when your order arrives</small></span></label>
+          <label><input type="radio" name="payment" value="upi"><span><i class="fas fa-qrcode"></i><b>UPI (Demo)</b><small>Google Pay, PhonePe or Paytm</small></span></label>
+          <label><input type="radio" name="payment" value="card"><span><i class="far fa-credit-card"></i><b>Card (Demo)</b><small>Credit or debit card</small></span></label>
+        </div>
+      </section>
+      <button class="place-order-btn" type="submit"><i class="fas fa-shield-halved"></i> Place Order</button>
+    </form>
+    <aside class="checkout-summary">
+      <h2>Order Summary</h2><div id="checkoutItems"></div><div class="summary-divider"></div>
+      <div class="summary-row"><span>Subtotal</span><strong id="checkoutSubtotal">₹0</strong></div>
+      <div class="summary-row"><span>Delivery</span><strong class="free-delivery">FREE</strong></div>
+      <div class="summary-row"><span>Coupon Discount</span><strong id="checkoutDiscount">−₹0</strong></div>
+      <div class="summary-row total-row"><span>Total</span><strong id="checkoutTotal">₹0</strong></div>
+      <div class="safe-checkout"><i class="fas fa-lock"></i><div><strong>Safe checkout</strong><span>This is a frontend demo project.</span></div></div>
+    </aside>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
